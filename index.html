@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <title>D3</title>
+</head>
+<body>
+    
+
+    <script>
+        var pieData = [
+                {
+                    name: "Health & Fitness", icon: "img/health-fitness.svg", amount: 79,
+                    subcat: [{ name: "pharmacy", icon:"icon-link", amount: 68},
+                             { name: "medicine", icon:"icon-link", amount: 89},
+                             { name: "health-insurance", icon:"icon-link", amount: 11},
+                             { name: "sports", icon:"icon-link", amount: 290}
+                            ]
+                }, 
+                {
+                    name: "Kids", icon: "img/kids.svg", amount: 5,
+                    subcat: [{ name: "babysitter-daycare", amount: 1},
+                             { name: "kids-activities", icon:"icon-link", amount: 1},
+                             { name: "child-support", icon:"icon-link", amount: 1},
+                             { name: "toys", icon:"icon-link", amount: 2}
+                            ]
+                },
+                {
+                    name: "Food & Drinks", icon: "img/food.svg", amount: 57,
+                    subcat: [{ name: "restaurants", icon:"icon-link", amount: 68},
+                             { name: "coffee-shop", icon:"icon-link", amount: 89},
+                             { name: "groceries", icon:"icon-link", amount: 11},
+                             { name: "alcohol-bars", icon:"icon-link", amount: 850}
+                            ]
+                },
+            ];
+
+
+var width = 540,
+    height = 360,
+    outerRadius = 113,
+    innerRadius = 56.5,
+    distanceToLabel = 26;        
+
+
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+var g = svg.append("g")
+    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+var pie = d3.pie().value(function (d) {
+    return d.amount;
+});
+
+var path = d3.arc()
+    .outerRadius(outerRadius)
+    .innerRadius(innerRadius);
+
+var label = d3.arc()
+    .outerRadius(outerRadius + distanceToLabel)
+    .innerRadius(outerRadius + distanceToLabel);
+
+
+var arc = g.selectAll(".arc")
+    .data(pie(pieData))
+    .enter().append("g")
+    .attr("class", "arc");
+
+arc.append("path")
+    .attr("d", path)
+    .attr("fill", function (d, i) { return getRandomColor(); })
+    .attr("stroke", "#fff");
+
+//add icons
+
+var slicesWithIcons = arc
+
+slicesWithIcons.append("svg:image")
+    .attr("href", function(d) {return d.data.icon})   
+    .attr("transform", function(d){
+        var x = path.centroid(d)[0] - 9;
+        var y = path.centroid(d)[1] - 9;
+        return "translate(" + x + "," + y + ")";
+    })
+    .attr("width", 18).attr("height", 18);
+
+// arc.append("svg:text")
+//     .attr("transform", function(d) { 
+   
+//     d.outerRadius = outerRadius + 80; // Set Outer Coordinate
+//     d.innerRadius = outerRadius + 75; // Set Inner Coordinate
+//     return "translate(" + path.centroid(d) + ")";
+//     })
+//     .attr("text-anchor", "end") //center the text on it's origin
+//     .style("fill", "Purple")
+//     .style("font", "bold 12px Arial")
+//     .text(function(d, i) { return d.data.name; });
+
+
+// var text = g.select(".labels").selectAll("text")
+// 		.data(pie(pieData));
+
+// 	text.enter()
+// 		.append("text")
+// 		.attr("dy", ".35em")
+// 		.text(function(d) {
+// 			return d.data.name;
+// 		});
+	
+// 	function midAngle(d){
+// 		return d.startAngle + (d.endAngle - d.startAngle)/2;
+// 	}
+    </script>
+</body>
+</html>
