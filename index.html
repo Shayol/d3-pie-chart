@@ -21,7 +21,7 @@
                             ]
                 }, 
                 {
-                    name: "Kids", icon: "img/kids.svg", amount: 5,
+                    name: "Kids", icon: "img/kids.svg", amount: 9,
                     subcat: [{ name: "babysitter-daycare", amount: 1},
                              { name: "kids-activities", icon:"icon-link", amount: 1},
                              { name: "child-support", icon:"icon-link", amount: 1},
@@ -42,18 +42,13 @@
 var width = 540,
     height = 360,
     outerRadius = 113,
-    innerRadius = 56.5,
+    innerRadius = 66.5,
     distanceToLabel = 26;        
 
+var color = d3.scaleOrdinal(["#3f51b5", "#009688", "#039be5", "#d2d588",
+                            "#795548", "#ff6f00", "#e91e63", "#607d8b",
+                            "#7cb342", "#e53935"]);
 
-function getRandomColor() {
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    for (var i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-}
 
 var svg = d3.select("body").append("svg")
     .attr("width", width)
@@ -80,14 +75,23 @@ var arc = g.selectAll(".arc")
     .enter().append("g")
     .attr("class", "arc");
 
-arc.append("path")
+//add color to slices
+
+var slices = arc.append("path")
     .attr("d", path)
-    .attr("fill", function (d, i) { return getRandomColor(); })
+    .attr("fill", function (d, i) { return color(i); })
     .attr("stroke", "#fff");
 
 //add icons
 
-var slicesWithIcons = arc
+var slicesWithIcons = arc.filter(function(d,i) {
+    var angle = d.endAngle - d.startAngle;
+
+    if(angle > 0.38) {    //??find corret number for angle when slice is big enough for icon
+        return true;
+    }
+    return false;
+    });
 
 slicesWithIcons.append("svg:image")
     .attr("href", function(d) {return d.data.icon})   
@@ -96,7 +100,23 @@ slicesWithIcons.append("svg:image")
         var y = path.centroid(d)[1] - 9;
         return "translate(" + x + "," + y + ")";
     })
-    .attr("width", 18).attr("height", 18);
+    .attr("width", 16).attr("height", 16); //??calculate correct height
+
+
+// change opacity of slice on mouseover, change cursor to zoom-in 
+slices.on("mouseover", function() {
+        d3.select(this).style("opacity", .5)
+                       .style("cursor", "zoom-in");
+    }).
+    on("mouseout", function() {
+        d3.select(this).style("opacity", 1)
+                       .style("cursor", "pointer");
+    });
+
+
+
+
+
 
 // arc.append("svg:text")
 //     .attr("transform", function(d) { 
