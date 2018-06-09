@@ -65,7 +65,7 @@ var path = d3.arc()
     .outerRadius(outerRadius)
     .innerRadius(innerRadius);
 
-var label = d3.arc()
+var labelArc = d3.arc()
     .outerRadius(outerRadius + distanceToLabel)
     .innerRadius(outerRadius + distanceToLabel);
 
@@ -113,8 +113,13 @@ slices.on("mouseover", function() {
                        .style("cursor", "pointer");
     });
 
-
-
+// add labels
+arc.append("text")
+      .attr("transform", function(d) {
+        var c = labelArc.centroid(d);
+        return "translate(" + c[0]*1.2 +"," + c[1]*1.2 + ")"; })
+      .attr("dy", ".35em")
+      .text(function(d) { return d.data.name; });
 
 
 
