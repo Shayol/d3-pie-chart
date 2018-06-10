@@ -13,30 +13,29 @@
     <script>
         var pieData = [
                 {
-                    name: "Health & Fitness", icon: "img/health-fitness.svg", amount: 79,
-                    subcat: [{ name: "pharmacy", icon:"icon-link", amount: 68},
-                             { name: "medicine", icon:"icon-link", amount: 89},
-                             { name: "health-insurance", icon:"icon-link", amount: 11},
-                             { name: "sports", icon:"icon-link", amount: 290}
-                            ]
+                    id: 1, parent_id: 0, name: "Health & Fitness", icon: "img/health-fitness.svg", amount: 79
                 }, 
                 {
-                    name: "Kids", icon: "img/kids.svg", amount: 9,
-                    subcat: [{ name: "babysitter-daycare", amount: 1},
-                             { name: "kids-activities", icon:"icon-link", amount: 1},
-                             { name: "child-support", icon:"icon-link", amount: 1},
-                             { name: "toys", icon:"icon-link", amount: 2}
-                            ]
+                    id: 2, parent_id: 0, name: "Kids", icon: "img/kids.svg", amount: 55
                 },
                 {
-                    name: "Food & Drinks", icon: "img/food.svg", amount: 57,
-                    subcat: [{ name: "restaurants", icon:"icon-link", amount: 68},
+                    id: 3, parent_id: 0, name: "Food & Drinks", icon: "img/food.svg", amount: 17
+                },
+            ];
+
+    var subcat = [  { id: 4, parent__id: 1, name: "pharmacy", icon:"icon-link", amount: 68},
+                    { id: 5, parent__id: 1, name: "medicine", icon:"icon-link", amount: 89},
+                    { id: 6, parent__id: 1, name: "health-insurance", icon:"icon-link", amount: 11},
+                    { id: 7, parent__id: 1, name: "sports", icon:"icon-link", amount: 290},
+                    { id: 8, parent__id: 2, name: "babysitter-daycare", amount: 1},
+                    { id: 9, parent__id: 2, name: "kids-activities", icon:"icon-link", amount: 1},
+                    { id: 10, parent__id: 2, name: "child-support", icon:"icon-link", amount: 1},
+                    { id: 11, parent__id: 2, name: "toys", icon:"icon-link", amount: 2},
+                    { name: "restaurants", icon:"icon-link", amount: 68},
                              { name: "coffee-shop", icon:"icon-link", amount: 89},
                              { name: "groceries", icon:"icon-link", amount: 11},
                              { name: "alcohol-bars", icon:"icon-link", amount: 850}
-                            ]
-                },
-            ];
+                ]
 
 
 var width = 540,
@@ -114,11 +113,20 @@ slices.on("mouseover", function() {
     });
 
 // add labels
+
+function midAngle(d){
+    return d.startAngle + (d.endAngle - d.startAngle)/2;
+} 
+
+
 arc.append("text")
       .attr("transform", function(d) {
-        var c = labelArc.centroid(d);
-        return "translate(" + c[0]*1.2 +"," + c[1]*1.2 + ")"; })
-      .attr("dy", ".35em")
+        var x = 133 * (midAngle(d) < Math.PI ? 1 : -1);
+        var y = labelArc.centroid(d)[1];
+        return "translate(" + x + "," + y + ")"; })
+      .style("text-anchor", function(d) {
+        return midAngle(d) < Math.PI ? "start":"end";
+      })
       .text(function(d) { return d.data.name; });
 
 
