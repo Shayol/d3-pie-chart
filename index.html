@@ -17,6 +17,10 @@
             font-family: Roboto;
         }
 
+        .pie-total {
+            font-size: 22px;
+            font-weight: bold;
+        }
 
         .baloon-amount {
             color: #444444;
@@ -295,6 +299,17 @@
 
             polyline.exit()
                 .remove();
+
+
+            // show total value
+
+            var totalValue = d3.sum(data, function(d){ return d.value; });
+
+            g.append("text")
+            .attr("text-anchor", "middle")
+            .attr("dy", ".35em")
+            .attr("class", "pie-total")
+            .text(totalValue + " €");
         }
 
         change(fetchData(raw_data));
