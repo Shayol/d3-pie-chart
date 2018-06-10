@@ -116,8 +116,8 @@
         ]
 
 
-        var width = 465,
-            height = 360,
+        var width = 490,
+            height = 340,
             outerRadius = 114,
             innerRadius = 66.5,
             labelR = outerRadius + 21;
@@ -204,11 +204,6 @@
             d3.select(this).style("cursor", "zoom-in");
             d3.select(this.parentNode)
             .select("path").style("opacity", .5);
-        })
-        
-        .on("mouseout", function () {
-            d3.select(this.parentNode)
-            .select("path").style("opacity", .5);
         });
 
         // add baloons(tooltips) 
@@ -245,7 +240,14 @@
             // baloons show up on mouseover 
             
             .on('mouseover', tool_tip.show)
-            .on('mouseout', tool_tip.hide);
+
+            //baloon hides after timeout so the user has
+            //time to click on it
+            .on('mouseout', function(d) {
+                setTimeout(function() {
+                    tool_tip.hide();
+                }, 2000)
+            });
             
             
         // make lines 
