@@ -42,7 +42,7 @@ var width = 540,
     height = 360,
     outerRadius = 113,
     innerRadius = 66.5,
-    distanceToLabel = 26;        
+    labelR = outerRadius + 20;        
 
 var color = d3.scaleOrdinal(["#3f51b5", "#009688", "#039be5", "#d2d588",
                             "#795548", "#ff6f00", "#e91e63", "#607d8b",
@@ -60,30 +60,26 @@ var pie = d3.pie().value(function (d) {
     return d.amount;
 });
 
-var path = d3.arc()
+var pieArc = d3.arc()
     .outerRadius(outerRadius)
     .innerRadius(innerRadius);
 
-var labelArc = d3.arc()
-    .outerRadius(outerRadius + distanceToLabel)
-    .innerRadius(outerRadius + distanceToLabel);
 
-
-var arc = g.selectAll(".arc")
+var arcs = g.selectAll(".arc")
     .data(pie(pieData))
     .enter().append("g")
     .attr("class", "arc");
 
 //add color to slices
 
-var slices = arc.append("path")
-    .attr("d", path)
+var slices = arcs.append("path")
+    .attr("d", pieArc)
     .attr("fill", function (d, i) { return color(i); })
     .attr("stroke", "#fff");
 
 //add icons
 
-var slicesWithIcons = arc.filter(function(d,i) {
+var slicesWithIcons = arcs.filter(function(d,i) {
     var angle = d.endAngle - d.startAngle;
 
     if(angle > 0.38) {    //??find corret number for angle when slice is big enough for icon
@@ -95,8 +91,8 @@ var slicesWithIcons = arc.filter(function(d,i) {
 slicesWithIcons.append("svg:image")
     .attr("href", function(d) {return d.data.icon})   
     .attr("transform", function(d){
-        var x = path.centroid(d)[0] - 9;
-        var y = path.centroid(d)[1] - 9;
+        var x = pieArc.centroid(d)[0] - 9;
+        var y = pieArc.centroid(d)[1] - 9;
         return "translate(" + x + "," + y + ")";
     })
     .attr("width", 16).attr("height", 16); //??calculate correct height
@@ -114,49 +110,24 @@ slices.on("mouseover", function() {
 
 // add labels
 
-function midAngle(d){
-    return d.startAngle + (d.endAngle - d.startAngle)/2;
-} 
+var labels = arcs.append("text")
+    .attr("transform", function(d) {
+        var c = pieArc.centroid(d),
+            x = c[0],
+            y = c[1],
+            // pythagorean theorem for hypotenuse
+            h = Math.sqrt(x*x + y*y);
+        return "translate(" + (x/h * labelR) +  ',' +
+           (y/h * labelR) +  ")"; 
+    })
+    .attr("dy", ".35em")
+    .attr("text-anchor", function(d) {
+        // are we past the center?
+        return (d.endAngle + d.startAngle)/2 > Math.PI ?
+            "end" : "start";
+    })
+    .text(function(d, i) { return d.data.name; });
 
-
-arc.append("text")
-      .attr("transform", function(d) {
-        var x = 133 * (midAngle(d) < Math.PI ? 1 : -1);
-        var y = labelArc.centroid(d)[1];
-        return "translate(" + x + "," + y + ")"; })
-      .style("text-anchor", function(d) {
-        return midAngle(d) < Math.PI ? "start":"end";
-      })
-      .text(function(d) { return d.data.name; });
-
-
-
-// arc.append("svg:text")
-//     .attr("transform", function(d) { 
-   
-//     d.outerRadius = outerRadius + 80; // Set Outer Coordinate
-//     d.innerRadius = outerRadius + 75; // Set Inner Coordinate
-//     return "translate(" + path.centroid(d) + ")";
-//     })
-//     .attr("text-anchor", "end") //center the text on it's origin
-//     .style("fill", "Purple")
-//     .style("font", "bold 12px Arial")
-//     .text(function(d, i) { return d.data.name; });
-
-
-// var text = g.select(".labels").selectAll("text")
-// 		.data(pie(pieData));
-
-// 	text.enter()
-// 		.append("text")
-// 		.attr("dy", ".35em")
-// 		.text(function(d) {
-// 			return d.data.name;
-// 		});
-	
-// 	function midAngle(d){
-// 		return d.startAngle + (d.endAngle - d.startAngle)/2;
-// 	}
     </script>
 </body>
 </html>
