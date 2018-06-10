@@ -179,7 +179,17 @@
                             .duration(100)
                             .style("opacity", 1);
                         d3.select(this).style("cursor", "default");
-                    });
+                    })
+
+                //add animation to slices on load
+                .transition().delay(function(d, i) { return i * 500; })
+                .duration(700).attrTween('d', function(d) {
+                    var i = d3.interpolate(d.startAngle+0.1, d.endAngle);
+                    return function(t) {
+                        d.endAngle = i(t);
+                        return pieArc(d);
+                    }
+                });
 
             newArcs.exit()
                 .remove();
