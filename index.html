@@ -194,35 +194,11 @@
             var slices = arcs.append("path")
                 .attr("d", pieArc)
                 .attr("fill", function (d, i) { return d.data.color || color(i); })
-                .attr("stroke", "#fff")
-                .on("click", function (d, i) {
-                    if (fetchData(raw_data, d.data.label).length) {
-
-                        //total added and removed on every change function call 
-                        total.remove();
-                        change(fetchData(raw_data, d.data.label))
-                        
-                    }
-                })
-                .on("mouseover", function (d) {
-                        if (fetchData(raw_data, d.data.label).length) {
-                            d3.select(this)
-                                .transition()
-                                .duration(200)
-                                .style("opacity", 0.5);
-                            d3.select(this).style("cursor", "zoom-in");
-                        }
-                    })
-                .on("mouseout", function (d) {
-                        d3.select(this)
-                            .transition()
-                            .duration(100)
-                            .style("opacity", 1);
-                        d3.select(this).style("cursor", "default");
-                    })
+                .attr("stroke", "#fff");
+                
 
                 //add animation to slices on load
-                slices.transition()
+                slices.transition("load")
                 .duration(function(d, i) { 
                     return caclPerc(d.data.value) * 50; 
                 })
@@ -233,6 +209,32 @@
                         return pieArc(d);
                     }
                 });
+
+                slices.on("click", function (d, i) {
+                    if (fetchData(raw_data, d.data.label).length) {
+
+                        //total added and removed on every 'change' function call 
+                        total.remove();
+                        change(fetchData(raw_data, d.data.label))
+                        
+                    }
+                })
+                .on("mouseover", function (d) {
+                        if (fetchData(raw_data, d.data.label).length) {
+                            d3.select(this)
+                                .transition("mouseover")
+                                .duration(200)
+                                .style("opacity", 0.5);
+                            d3.select(this).style("cursor", "zoom-in");
+                        }
+                    })
+                .on("mouseout", function (d) {
+                        d3.select(this)
+                            .transition("mouseout")
+                            .duration(100)
+                            .style("opacity", 1);
+                        d3.select(this).style("cursor", "default");
+                    })
 
             newArcs.exit()
                 .remove();
@@ -259,11 +261,9 @@
 
             // change opacity of slice when mouse over icon 
 
-            icons.on("mouseover", function (d) {
+            icons.on("mouseover", function (d,i,nodes) {
                 if (fetchData(raw_data, d.data.label).length) {
                     d3.select(this).style("cursor", "zoom-in");
-                    d3.select(this.parentNode)
-                    .select("path").style("opacity", .5);
                 }
             })
             .on("click", function (d, i) {
