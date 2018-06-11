@@ -1,0 +1,15 @@
+[
+    { "label": "Kids", "icon_path": "img/kids.svg", "value": 40, "transactions": 31, "color": "#ff6f00", "parent_label": "" },
+    { "label": "Health & fitness", "icon_path": "img/health-fitness.svg", "value": 24, "transactions": 15, "color": "#009688", "parent_label": "" },
+    { "label": "Utilities", "icon_path": "img/utilities.svg", "value": 5, "transactions": 9, "color": "#7cb342", "parent_label": "" },
+    { "label": "Food & drinks", "icon_path": "img/food.svg", "value": 45, "transactions": 31, "color": "#afb42b", "parent_label": "" },
+    { "label": "Household", "icon_path": "img/household.svg", "value": 10, "transactions": 9, "color": "#795548", "parent_label": "" },
+    { "label": "Baby supplies", "icon_path": "", "value": 30, "transactions": 31, "parent_label": "Kids" },
+    { "label": "Babysitter daycare", "icon_path": "", "value": 50, "transactions": 31, "parent_label": "Kids" },
+    { "label": "Pharmacy", "icon_path": "", "value": 10, "transactions": 31, "parent_label": "Health & fitness" },
+    { "label": "Medicine", "icon_path": "", "value": 50, "transactions": 1, "parent_label": "Health & fitness" },
+    { "label": "Restaurants", "icon_path": "", "value": 20, "transactions": 31, "parent_label": "Food & drinks" },
+    { "label": "sub_category1", "icon_path": "", "value": 50, "transactions": 1, "parent_label": "Food & drinks" },
+    { "label": "sub_category2", "icon_path": "", "value": 30, "transactions": 31, "parent_label": "Restaurants" },
+    { "label": "sub_category3", "icon_path": "", "value": 20, "transactions": 31, "parent_label": "Restaurants" },
+]
