@@ -10,13 +10,19 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <style>
 
+        html {
+            height: 100%;
+        }
+
         body {
+            height: 100%;
             position: relative;
             box-sizing: border-box;
             font-size: 15px;
             font-family: Roboto;
             display: flex;
             justify-content: center;
+            align-items: center;
         }
 
         .pie-total {
@@ -82,8 +88,8 @@
             left: 50%;
             transform: rotate(45deg);
             transform-origin: top right;
-            border-right: 1px solid #999999;
-            border-bottom: 1px solid #999999;
+            border-right: 1px solid #dddddd;
+            border-bottom: 1px solid #dddddd;
             background-color: white;
             z-index: 2;
         }
