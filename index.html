@@ -57,15 +57,14 @@
             cursor: pointer;
         }
 
-        .d3-tip {
-            
+        .d3-tip {            
             position: relative;
             width: 145px;
             height: 97px;
             padding: 14px 0;
             font-size: 14px;
-            background-color: rgba(255, 255, 255, 0.911);
-            border: 1px solid #dddddd;
+            background-color: white;
+            border: 2px solid #dddddd;
             border-radius: 8px;
             line-height: 1;          
          }
@@ -89,8 +88,8 @@
             left: 50%;
             transform: rotate(45deg);
             transform-origin: top right;
-            border-right: 1px solid #dddddd;
-            border-bottom: 1px solid #dddddd;
+            border-right: 2px solid #dddddd;
+            border-bottom: 2px solid #dddddd;
             background-color: white;
             z-index: 2;
         }
@@ -130,7 +129,7 @@
             height = 340,
             outerRadius = 114,
             innerRadius = 66.5,
-            labelR = outerRadius + 21;
+            labelR = outerRadius + 28;
 
         var color = d3.scaleOrdinal(["#3f51b5", "#009688", "#039be5", "#d2d588",
             "#795548", "#ff6f00", "#e91e63", "#607d8b",
@@ -282,13 +281,15 @@
             // add baloons(tooltips) 
 
             var tool_tip = d3.tip()
-                    .attr("class", "d3-tip")
-                    .offset([-12, 0])
-                    .html(function(d) { return "<a href='#' class='pie-baloon-link'><div class='pie-baloon-transactions'>" + d.data.transactions + " transactions </div>"
-                            + "<div class='pie-baloon-amount'>"
-                            + d.data.value + " €</div>"                         
-                            + "<div>" + caclPerc(d.data.value) + "%</div></a>"; });
-                    g.call(tool_tip);
+                .attr("class", "d3-tip")
+                .offset([-15, 0])
+                .html(function(d) { return "<a href='#' class='pie-baloon-link'><div class='pie-baloon-transactions'>" + d.data.transactions + " transactions </div>"
+                        + "<div class='pie-baloon-amount'>"
+                        + d.data.value + " €</div>"                         
+                        + "<div>" + caclPerc(d.data.value) + "%</div></a>"; });
+                g.call(tool_tip);
+
+            // hide baloons on mouseout 
 
             // add labels                         
             var labels = arcs.append("text")
@@ -312,14 +313,26 @@
 
                 // baloons show up on mouseover 
                 
-                .on('mouseover', tool_tip.show)
+                .on('mouseover', function(d) {
+                    tool_tip.show(d);
+
+                    //baloon hides when mouse pointer leaves the baloon
+                    var baloon =  document.querySelector(".d3-tip");
+                    baloon.addEventListener('mouseleave', function(e) {
+                        tool_tip.hide();
+                    });
+                })
 
                 //baloon hides after timeout so the user has
                 //time to click on it
                 .on('mouseout', function(d) {
-                    setTimeout(function() {
+                    var coordinates = [0, 0];
+                    coordinates = d3.mouse(this);
+
+                    var y = coordinates[1];
+                    if (y > -1) {
                         tool_tip.hide();
-                    }, 3000)
+                    }
                 });
                 
                 
