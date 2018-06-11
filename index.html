@@ -15,6 +15,8 @@
             box-sizing: border-box;
             font-size: 15px;
             font-family: Roboto;
+            display: flex;
+            justify-content: center;
         }
 
         .pie-total {
@@ -96,9 +98,9 @@
 
     <script>
         raw_data = [
-            { "label": "Kids", "icon_path": "img/kids.svg", "value": 20, "transactions": 31, "color": "#ff6f00", "parent_label": "" },
+            { "label": "Kids", "icon_path": "img/kids.svg", "value": 40, "transactions": 31, "color": "#ff6f00", "parent_label": "" },
             { "label": "Health & fitness", "icon_path": "img/health-fitness.svg", "value": 50, "transactions": 15, "color": "#009688", "parent_label": "" },
-            { "label": "Food & drinks", "icon_path": "img/food.svg", "value": 30, "transactions": 31, "color": "#afb42b", "parent_label": "" },
+            { "label": "Food & drinks", "icon_path": "img/food.svg", "value": 10, "transactions": 31, "color": "#afb42b", "parent_label": "" },
             { "label": "Baby supplies", "icon_path": "", "value": 30, "transactions": 31, "parent_label": "Kids" },
             { "label": "Babysitter daycare", "icon_path": "", "value": 50, "transactions": 31, "parent_label": "Kids" },
             { "label": "Restaurants", "icon_path": "", "value": 20, "transactions": 31, "parent_label": "Food & drinks" },
@@ -214,7 +216,7 @@
                     })
 
                 //add animation to slices on load
-                .transition().delay(function(d, i) { return i * 500; })
+                .transition().delay(function(d, i) { return i * 700; })
                 .duration(700).attrTween('d', function(d) {
                     var i = d3.interpolate(d.startAngle+0.1, d.endAngle);
                     return function(t) {
