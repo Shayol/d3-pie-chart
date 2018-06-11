@@ -200,7 +200,7 @@
                 //add animation to slices on load
                 slices.transition("load")
                 .duration(function(d, i) { 
-                    return caclPerc(d.data.value) * 50; 
+                    return caclPerc(d.data.value) * 20; 
                 })
                 .attrTween('d', function(d) {
                     var i = d3.interpolate(d.startAngle+0.1, d.endAngle);
