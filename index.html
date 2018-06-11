@@ -222,7 +222,7 @@
                     })
 
                 //add animation to slices on load
-                .transition().delay(function(d, i) { return i * 700; })
+                slices.transition().delay(function(d, i) { return i * 700; })
                 .duration(700).attrTween('d', function(d) {
                     var i = d3.interpolate(d.startAngle+0.1, d.endAngle);
                     return function(t) {
@@ -265,6 +265,8 @@
             })
             .on("click", function (d, i) {
                 if (fetchData(raw_data, d.data.label).length) {
+
+                    total.remove();
                     change(fetchData(raw_data, d.data.label));                    
                 }
             });
