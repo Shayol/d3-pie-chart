@@ -22,24 +22,34 @@
             font-weight: bold;
         }
 
-        .baloon-amount {
+        .pie-baloon-link {
+            text-decoration: none;
+            text-align: center;
+            display: block;
+            width: 100%;
+            height: 100%;
+            color: #999999;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .pie-baloon-amount {
             color: #444444;
             font-weight: bold;
             font-size: 20px;
         }
 
-        .baloon-transactions {
+        .pie-baloon-transactions {
             color: #039be5;
         }
 
-        .label:hover {
+        .pie-label:hover {
             fill: #039be5;
         }
 
         .d3-tip {
-            color: #999999;
-            text-align: center;
-            text-align: center;
+            
             position: relative;
             width: 145px;
             height: 97px;
@@ -49,9 +59,6 @@
             border: 1px solid #dddddd;
             border-radius: 8px;
             line-height: 1;          
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
          }
 
          text {
@@ -89,15 +96,15 @@
 
     <script>
         raw_data = [
-            { "label": "Kids", "icon_path": "img/kids.svg", "value": 20, "color": "#ff6f00", "parent_label": "" },
-            { "label": "Health & fitness", "icon_path": "img/health-fitness.svg", "value": 50, "color": "#009688", "parent_label": "" },
-            { "label": "Food & drinks", "icon_path": "img/food.svg", "value": 30, "color": "#afb42b", "parent_label": "" },
-            { "label": "Baby supplies", "icon_path": "", "value": 30, "parent_label": "Kids" },
-            { "label": "Babysitter daycare", "icon_path": "", "value": 50, "parent_label": "Kids" },
-            { "label": "Restaurants", "icon_path": "", "value": 20, "parent_label": "Food & drinks" },
-            { "label": "sub_category1", "icon_path": "", "value": 50, "parent_label": "Food & drinks" },
-            { "label": "sub_category2", "icon_path": "", "value": 30, "parent_label": "Restaurants" },
-            { "label": "sub_category3", "icon_path": "", "value": 20, "parent_label": "Restaurants" },
+            { "label": "Kids", "icon_path": "img/kids.svg", "value": 20, "transactions": 31, "color": "#ff6f00", "parent_label": "" },
+            { "label": "Health & fitness", "icon_path": "img/health-fitness.svg", "value": 50, "transactions": 15, "color": "#009688", "parent_label": "" },
+            { "label": "Food & drinks", "icon_path": "img/food.svg", "value": 30, "transactions": 31, "color": "#afb42b", "parent_label": "" },
+            { "label": "Baby supplies", "icon_path": "", "value": 30, "transactions": 31, "parent_label": "Kids" },
+            { "label": "Babysitter daycare", "icon_path": "", "value": 50, "transactions": 31, "parent_label": "Kids" },
+            { "label": "Restaurants", "icon_path": "", "value": 20, "transactions": 31, "parent_label": "Food & drinks" },
+            { "label": "sub_category1", "icon_path": "", "value": 50, "transactions": 1, "parent_label": "Food & drinks" },
+            { "label": "sub_category2", "icon_path": "", "value": 30, "transactions": 31, "parent_label": "Restaurants" },
+            { "label": "sub_category3", "icon_path": "", "value": 20, "transactions": 31, "parent_label": "Restaurants" },
         ]
 
         function fetchData(raw_data, parent = '') {
@@ -148,6 +155,24 @@
 
         function change(data) {
 
+            // calculate total value
+
+            var totalValue = d3.sum(data, function(d){ return d.value; });
+
+            var total = g.append("text")
+            .attr("text-anchor", "middle")
+            .attr("dy", ".35em")
+            .attr("class", "pie-total")
+            .text(totalValue + " €");
+
+            //calculate percent for baloon 
+
+            function caclPerc(value) {
+                return Math.round(value/totalValue * 100);
+            }
+
+            //start making donut chart
+
             var newArcs = g.selectAll(".arc")
                 .data(pie(data), key);
 
@@ -164,6 +189,9 @@
                 .attr("stroke", "#fff")
                 .on("click", function (d, i) {
                     if (fetchData(raw_data, d.data.label).length) {
+
+                        //total added and removed on every change function call 
+                        total.remove();
                         change(fetchData(raw_data, d.data.label))
                         
                     }
@@ -238,10 +266,10 @@
             var tool_tip = d3.tip()
                     .attr("class", "d3-tip")
                     .offset([-12, 0])
-                    .html(function(d) { return "<div class='baloon-transactions'>" + d.data.transactions + " transactions </div>"
-                            + "<div class='baloon-amount'>"
-                            + d.data.amount + " " + d.data.currency + "</div>"                         
-                            + "<div>" + d.data.percent + "%</div>"; });
+                    .html(function(d) { return "<a href='#' class='pie-baloon-link'><div class='pie-baloon-transactions'>" + d.data.transactions + " transactions </div>"
+                            + "<div class='pie-baloon-amount'>"
+                            + d.data.value + " €</div>"                         
+                            + "<div>" + caclPerc(d.data.value) + "%</div></a>"; });
                     g.call(tool_tip);
 
             // add labels                         
@@ -262,7 +290,7 @@
                         "end" : "start";
                 })
                 .text(function (d, i) { return d.data.label; })
-                .attr("class", "label")
+                .attr("class", "pie-label")
 
                 // baloons show up on mouseover 
                 
@@ -300,16 +328,6 @@
             polyline.exit()
                 .remove();
 
-
-            // show total value
-
-            var totalValue = d3.sum(data, function(d){ return d.value; });
-
-            g.append("text")
-            .attr("text-anchor", "middle")
-            .attr("dy", ".35em")
-            .attr("class", "pie-total")
-            .text(totalValue + " €");
         }
 
         change(fetchData(raw_data));
