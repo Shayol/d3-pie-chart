@@ -198,7 +198,8 @@
             var slices = arcs.append("path")
                 .attr("d", pieArc)
                 .attr("fill", function (d, i) { return d.data.color || color(i); })
-                .attr("stroke", "#fff");
+                .attr("stroke", "#fff")
+                .attr("class", "slice");
 
 
             //add animation to slices on load
@@ -254,52 +255,68 @@
                 return false;
             });
 
-            
 
-            slicesWithIcons.each(function(d) { 
 
-                var self = this;
+            slicesWithIcons.each(function (d) {
+
+                var self = d3.select(this);
+
+                //inside d3.svg endAngle changes
+                var endAngle = d.endAngle;
 
                 d3.svg(d.data.icon_path, { crossOrigin: "anonymous" }).then(function (svg) {
-                    
                     var svgNode = document.importNode(svg.documentElement, true);
                     
-                    d3.select(self).append(function(d) {
+                    self.append(function (d) {
                         return svgNode;
                     })
-                    .attr("width", 16).attr("height", 16)
-                    .attr("class", "icon")
-                    .attr("x", function (d) {
-                        var x =  pieArc.centroid(d)[0] - 8;
-                        return x;
-                    })
-                    .attr("y", function (d) {
-                        var y = pieArc.centroid(d)[1] - 8;
-                        return y;
-                    })
-                    .selectAll("path").style("fill", "#fff");
+                        .attr("width", 16).attr("height", 16)
+                        .attr("class", "icon")
+                        .attr("x", function (d) {
+                            d.endAngle = endAngle;
+
+                            var x = pieArc.centroid(d)[0] - 8;
+                            return x;
+                        })
+                        .attr("y", function (d) {
+                            var y = pieArc.centroid(d)[1] - 8;
+                            return y;
+                        })
+                        .on("mouseover", function (d, i, nodes) {
+                            if (fetchData(raw_data, d.data.label).length) {
+                                d3.select(this).style("cursor", "zoom-in");
+                                // console.log(self._groups[0][0].childNodes[0]);
+                                // self.style("opacity", 0.5);
+            
+                            }
+                        })
+                        .on("click", function (d, i) {
+                            if (fetchData(raw_data, d.data.label).length) {
+
+                                total.remove();
+                                change(fetchData(raw_data, d.data.label));
+                            }
+                        })
+                        .selectAll("path").style("fill", "#fff");
+                        
                 });
-                
+
             });
-                
 
 
 
-            var icons = d3.selectAll(".icon");
+            // var icons = slicesWithIcons.append("svg:image")
+            //     .attr("href", function (d) { return d.data.icon_path })
+            //     .attr("transform", function (d) {
+            //         var x = pieArc.centroid(d)[0] - 8;
+            //         var y = pieArc.centroid(d)[1] - 8;
+            //         // console.log("image");
+            //         // console.log(d);
+            //         return "translate(" + x + "," + y + ")";
+            //     })
+            //     .attr("width", 16).attr("height", 16);
+
             // change opacity of slice when mouse over icon 
-
-            icons.on("mouseover", function (d,i,nodes) {
-                if (fetchData(raw_data, d.data.label).length) {
-                    d3.select(this).style("cursor", "zoom-in");
-                }
-            })
-            .on("click", function (d, i) {
-                if (fetchData(raw_data, d.data.label).length) {
-
-                    total.remove();
-                    change(fetchData(raw_data, d.data.label));                    
-                }
-            });
 
             //add baloons(tooltips) 
 
