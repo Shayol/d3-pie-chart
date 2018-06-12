@@ -1,0 +1,796 @@
+/* ------------------------------------------------------------------------------
+*
+*  # Color Set
+*
+*  Version: 1.1
+*  Latest update: Jan 15, 2018
+*
+* ---------------------------------------------------------------------------- */
+
+*[class*=IconCat-] {
+background-repeat:no-repeat;
+background-position:center;
+}
+
+div[SModalGradient-] {
+}
+
+/* COLORED ICONS */
+
+
+/* Food */
+
+.CatColor-food,
+.CatColor-groceries,
+.CatColor-restaurants,
+.CatColor-coffee-shops,
+.CatColor-alcohol-bars {color:#afb42b;}
+
+.SModalGradient-food,
+.SModalGradient-groceries,
+.SModalGradient-restaurants,
+.SModalGradient-coffee-shops,
+.SModalGradient-alcohol-bars {
+	background: #f4f4e1;
+	background: -moz-linear-gradient(top, #f4f4e1 0%, #fff 100%);
+	background: -webkit-linear-gradient(top, #f4f4e1 0%,#fff 100%);
+	background: linear-gradient(to bottom, #f4f4e1 0%,#fff 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4f4e1', endColorstr='#ffffff',GradientType=0 );
+	}
+
+.CatBg-food,
+.CatBg-groceries,
+.CatBg-restaurants,
+.CatBg-coffee-shops,
+.CatBg-alcohol-bars {background-color:#f4f4e1;}
+
+.IconCat-food {background-image:url(../images/icons/cat-color/food.svg);}
+.IconCat-custom-category-food {background-image:url(../images/icons/cat-color/custom-category-food.svg);}
+.IconCat-groceries {background-image:url(../images/icons/cat-color/groceries.svg);}
+.IconCat-restaurants {background-image:url(../images/icons/cat-color/restaurants.svg);}
+.IconCat-coffee-shops {background-image:url(../images/icons/cat-color/coffee-shops.svg);}
+.IconCat-alcohol-bars {background-image:url(../images/icons/cat-color/alcohol-bars.svg);}
+
+
+.hidden {
+	display: none;
+}
+
+/* Clothing */
+
+.CatColor-clothing,
+.CatColor-clothing-shoes,
+.CatColor-accesories {color:#e91e63;}
+
+.SModalGradient-clothing,
+.SModalGradient-clothing-shoes,
+.SModalGradient-accesories {
+	background: #fcdfe9;
+	background: -moz-linear-gradient(top, #fcdfe9 0%, #fff 100%);
+	background: -webkit-linear-gradient(top, #fcdfe9 0%,#fff 100%);
+	background: linear-gradient(to bottom, #fcdfe9 0%,#fff 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcdfe9', endColorstr='#ffffff',GradientType=0 );
+	}
+
+.CatBg-clothing,
+.CatBg-clothing-shoes,
+.CatBg-accesories {background-color:#fcdfe9;}
+
+.IconCat-clothing {background-image:url(../images/icons/cat-color/clothing.svg);}
+.IconCat-custom-category-clothing {background-image:url(../images/icons/cat-color/custom-category-clothing.svg);}
+.IconCat-clothing-shoes {background-image:url(../images/icons/cat-color/clothing-shoes.svg);}
+.IconCat-accesories {background-image:url(../images/icons/cat-color/accesories.svg);}
+
+
+/* Auto & Transport */
+
+.CatColor-auto-transport,
+.CatColor-fuel,
+.CatColor-parking,
+.CatColor-car-wash,
+.CatColor-service-auto-parts,
+.CatColor-auto-insurance,
+.CatColor-public-transport,
+.CatColor-taxi,
+.CatColor-tolls,
+.CatColor-car-leasing,
+.CatColor-transport-other,
+.CatColor-local-car-rental {color:#3f51b5;}
+
+.SModalGradient-auto-transport,
+.SModalGradient-fuel,
+.SModalGradient-parking,
+.SModalGradient-car-wash,
+.SModalGradient-service-auto-parts,
+.SModalGradient-auto-insurance,
+.SModalGradient-public-transport,
+.SModalGradient-taxi,
+.SModalGradient-tolls,
+.SModalGradient-car-leasing,
+.SModalGradient-transport-other,
+.SModalGradient-local-car-rental {
+	background: #e4e6f5;
+	background: -moz-linear-gradient(top, #e4e6f5 0%, #fff 100%);
+	background: -webkit-linear-gradient(top, #e4e6f5 0%,#fff 100%);
+	background: linear-gradient(to bottom, #e4e6f5 0%,#fff 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4e6f5', endColorstr='#ffffff',GradientType=0 );
+	}
+
+.CatBg-auto-transport,
+.CatBg-fuel,
+.CatBg-parking,
+.CatBg-car-wash,
+.CatBg-service-auto-parts,
+.CatBg-auto-insurance,
+.CatBg-public-transport,
+.CatBg-taxi,
+.CatBg-tolls,
+.CatBg-car-leasing,
+.CatBg-transport-other,
+.CatBg-local-car-rental {background-color:#e4e6f5;}	
+
+.IconCat-auto-transport {background-image:url(../images/icons/cat-color/auto-transport.svg);}
+.IconCat-custom-category-auto-transport {background-image:url(../images/icons/cat-color/custom-category-auto-transport.svg);}
+.IconCat-fuel {background-image:url(../images/icons/cat-color/fuel.svg);}
+.IconCat-parking {background-image:url(../images/icons/cat-color/parking.svg);}
+.IconCat-car-wash {background-image:url(../images/icons/cat-color/car-wash.svg);}
+.IconCat-service-auto-parts {background-image:url(../images/icons/cat-color/service-auto-parts.svg);}
+.IconCat-auto-insurance {background-image:url(../images/icons/cat-color/auto-insurance.svg);}
+.IconCat-public-transport {background-image:url(../images/icons/cat-color/public-transport.svg);}
+.IconCat-taxi {background-image:url(../images/icons/cat-color/taxi.svg);}
+.IconCat-tolls {background-image:url(../images/icons/cat-color/tolls.svg);}
+.IconCat-car-leasing {background-image:url(../images/icons/cat-color/car-leasing.svg);}
+.IconCat-transport-other {background-image:url(../images/icons/cat-color/transport-other.svg);}
+.IconCat-local-car-rental {background-image:url(../images/icons/cat-color/local-car-rental.svg);}
+	
+	
+/* Leisure & Entertainment */	
+	
+.CatColor-entertainment,
+.CatColor-cinema,
+.CatColor-music-concerts,
+.CatColor-arts,
+.CatColor-newspaper-magazines,
+.CatColor-leisure,
+.CatColor-entertainment-centers,
+.CatColor-entertainment-other,
+.CatColor-hobbies,
+.CatColor-software,
+.CatColor-games,
+.CatColor-gambling,
+.CatColor-books-supplies {color:#f4511e;}	
+	
+.SModalGradient-entertainment,
+.SModalGradient-cinema,
+.SModalGradient-music-concerts,
+.SModalGradient-arts,
+.SModalGradient-newspaper-magazines,
+.SModalGradient-leisure,
+.SModalGradient-entertainment-centers,
+.SModalGradient-entertainment-other,
+.SModalGradient-hobbies,
+.SModalGradient-software,
+.SModalGradient-games,
+.SModalGradient-gambling,
+.SModalGradient-books-supplies {
+	background: #fde6df;
+	background: -moz-linear-gradient(top, #fde6df 0%, #fff 100%);
+	background: -webkit-linear-gradient(top, #fde6df 0%,#fff 100%);
+	background: linear-gradient(to bottom, #fde6df 0%,#fff 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fde6df', endColorstr='#ffffff',GradientType=0 );
+	}	
+	
+.CatBg-entertainment,
+.CatBg-cinema,
+.CatBg-music-concerts,
+.CatBg-arts,
+.CatBg-newspaper-magazines,
+.CatBg-leisure,
+.CatBg-entertainment-centers,
+.CatBg-entertainment-other,
+.CatBg-hobbies,
+.CatBg-software,
+.CatBg-games,
+.CatBg-gambling,
+.CatBg-books-supplies {background-color:#fde6df;}		
+
+.IconCat-entertainment  {background-image:url(../images/icons/cat-color/entertainment.svg);}
+.IconCat-custom-category-entertainment  {background-image:url(../images/icons/cat-color/custom-category-entertainment.svg);}	
+.IconCat-cinema {background-image:url(../images/icons/cat-color/cinema.svg);}	
+.IconCat-music-concerts {background-image:url(../images/icons/cat-color/music-concerts.svg);}	
+.IconCat-arts {background-image:url(../images/icons/cat-color/arts.svg);}	
+.IconCat-newspaper-magazines {background-image:url(../images/icons/cat-color/newspaper-magazines.svg);}	
+.IconCat-leisure {background-image:url(../images/icons/cat-color/leisure.svg);}	
+.IconCat-entertainment-centers {background-image:url(../images/icons/cat-color/entertainment-centers.svg);}	
+.IconCat-entertainment-other {background-image:url(../images/icons/cat-color/entertainment-other.svg);}	
+.IconCat-hobbies {background-image:url(../images/icons/cat-color/hobbies.svg);}	
+.IconCat-software {background-image:url(../images/icons/cat-color/software.svg);}	
+.IconCat-games {background-image:url(../images/icons/cat-color/games.svg);}	
+.IconCat-gambling {background-image:url(../images/icons/cat-color/gambling.svg);}
+.IconCat-books-supplies {background-image:url(../images/icons/cat-color/books-supplies.svg);}	
+	
+	
+/* Education */	
+	
+.CatColor-education,
+.CatColor-tuition,
+.CatColor-e-books,
+.CatColor-online-learning,
+.CatColor-education-other {color:#757575;}	
+	
+.SModalGradient-education,
+.SModalGradient-tuition,
+.SModalGradient-e-books,
+.SModalGradient-online-learning,
+.SModalGradient-education-other {
+	background: #ececec;
+	background: -moz-linear-gradient(top, #ececec 0%, #fff 100%);
+	background: -webkit-linear-gradient(top, #ececec 0%,#fff 100%);
+	background: linear-gradient(to bottom, #ececec 0%,#fff 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ececec', endColorstr='#ffffff',GradientType=0 );
+	}	
+	
+.CatBg-education,
+.CatBg-tuition,
+.CatBg-e-books,
+.CatBg-online-learning,
+.CatBg-education-other {background-color:#ececec;}
+
+.IconCat-education {background-image:url(../images/icons/cat-color/education.svg);}
+.IconCat-custom-category-education {background-image:url(../images/icons/cat-color/custom-category-education.svg);}
+.IconCat-tuition {background-image:url(../images/icons/cat-color/tuition.svg);}
+.IconCat-e-books {background-image:url(../images/icons/cat-color/e-books.svg);}
+.IconCat-online-learning {background-image:url(../images/icons/cat-color/online-learning.svg);}
+.IconCat-education-other {background-image:url(../images/icons/cat-color/education-other.svg);}		
+	
+	
+/* Personal care */	
+
+.CatColor-personal-care,
+.CatColor-hair,
+.CatColor-spa-massage,
+.CatColor-cosmetics,
+.CatColor-jewelry,
+.CatColor-personal-care-other {color:#8e24aa;}		
+	
+.SModalGradient-personal-care,
+.SModalGradient-hair,
+.SModalGradient-spa-massage,
+.SModalGradient-cosmetics,
+.SModalGradient-jewelry,
+.SModalGradient-personal-care-other {
+	background: #efe0f3;
+	background: -moz-linear-gradient(top, #efe0f3 0%, #fff 100%);
+	background: -webkit-linear-gradient(top, #efe0f3 0%,#fff 100%);
+	background: linear-gradient(to bottom, #efe0f3 0%,#fff 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#efe0f3', endColorstr='#ffffff',GradientType=0 );
+	}	
+	
+.CatBg-personal-care,
+.CatBg-hair,
+.CatBg-spa-massage,
+.CatBg-cosmetics,
+.CatBg-jewelry,
+.CatBg-personal-care-other {background-color:#efe0f3;}	
+	
+.IconCat-personal-care {background-image:url(../images/icons/cat-color/personal-care.svg);}
+.IconCat-custom-category-personal-care {background-image:url(../images/icons/cat-color/custom-category-personal-care.svg);}
+.IconCat-hair {background-image:url(../images/icons/cat-color/hair.svg);}
+.IconCat-spa-massage {background-image:url(../images/icons/cat-color/spa-massage.svg);}
+.IconCat-cosmetics {background-image:url(../images/icons/cat-color/cosmetics.svg);}
+.IconCat-jewelry {background-image:url(../images/icons/cat-color/jewelry.svg);}
+.IconCat-personal-care-other {background-image:url(../images/icons/cat-color/personal-care-other.svg);}
+
+
+/* Health & Fitness */	
+
+.CatColor-health-fitness,
+.CatColor-pharmacy,
+.CatColor-medicine,
+.CatColor-health-insurance,
+.CatColor-sports,
+.CatColor-spirituality {color:#009688;}	
+
+.SModalGradient-health-fitness,
+.SModalGradient-pharmacy,
+.SModalGradient-medicine,
+.SModalGradient-health-insurance,
+.SModalGradient-sports,
+.SModalGradient-spirituality {
+	background: #dbf0ee;
+	background: -moz-linear-gradient(top, #dbf0ee 0%, #fff 100%);
+	background: -webkit-linear-gradient(top, #dbf0ee 0%,#fff 100%);
+	background: linear-gradient(to bottom, #dbf0ee 0%,#fff 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dbf0ee', endColorstr='#ffffff',GradientType=0 );
+	}	
+	
+.CatBg-health-fitness,
+.CatBg-pharmacy,
+.CatBg-medicine,
+.CatBg-health-insurance,
+.CatBg-sports,
+.CatBg-spirituality {background-color:#dbf0ee;}		
+
+
+.IconCat-health-fitness {background-image:url(../images/icons/cat-color/health-fitness.svg);}
+.IconCat-custom-category-health-fitness {background-image:url(../images/icons/cat-color/custom-category-health-fitness.svg);}
+.IconCat-pharmacy {background-image:url(../images/icons/cat-color/pharmacy.svg);}
+.IconCat-medicine {background-image:url(../images/icons/cat-color/medicine.svg);}
+.IconCat-health-insurance {background-image:url(../images/icons/cat-color/health-insurance.svg);}
+.IconCat-sports {background-image:url(../images/icons/cat-color/sports.svg);}
+.IconCat-jewelry {background-image:url(../images/icons/cat-color/jewelry.svg);}
+.IconCat-spirituality {background-image:url(../images/icons/cat-color/spirituality.svg);}
+
+
+/* Kids */	
+
+.CatColor-kids,
+.CatColor-kids-activities,
+.CatColor-baby-supplies,
+.CatColor-babysitter-daycare,
+.CatColor-child-support,
+.CatColor-toys {color:#ff6f00;}
+
+.SModalGradient-kids,
+.SModalGradient-kids-activities,
+.SModalGradient-baby-supplies,
+.SModalGradient-babysitter-daycare,
+.SModalGradient-child-support,
+.SModalGradient-toys {
+	background: #ffebdb;
+	background: -moz-linear-gradient(top, #ffebdb 0%, #fff 100%);
+	background: -webkit-linear-gradient(top, #ffebdb 0%,#fff 100%);
+	background: linear-gradient(to bottom, #ffebdb 0%,#fff 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffebdb', endColorstr='#ffffff',GradientType=0 );
+}	
+
+.CatBg-kids,
+.CatBg-kids-activities,
+.CatBg-baby-supplies,
+.CatBg-babysitter-daycare,
+.CatBg-child-support,
+.CatBg-toys {background-color:#ffebdb;}		
+
+.IconCat-kids {background-image:url(../images/icons/cat-color/kids.svg);}
+.IconCat-custom-category-kids {background-image:url(../images/icons/cat-color/custom-category-kids.svg);}
+.IconCat-kids-activities {background-image:url(../images/icons/cat-color/kids-activities.svg);}
+.IconCat-baby-supplies {background-image:url(../images/icons/cat-color/baby-supplies.svg);}
+.IconCat-babysitter-daycare {background-image:url(../images/icons/cat-color/babysitter-daycare.svg);}
+.IconCat-child-support {background-image:url(../images/icons/cat-color/child-support.svg);}
+.IconCat-toys {background-image:url(../images/icons/cat-color/toys.svg);}
+
+
+/* Gifts & Donations */	
+
+.CatColor-gifts-donations,
+.CatColor-gifts,
+.CatColor-charity {color:#e53935;}
+
+.SModalGradient-gifts-donations,
+.SModalGradient-gifts,
+.SModalGradient-charity {
+	background: #fbe3e2;
+	background: -moz-linear-gradient(top, #fbe3e2 0%, #fff 100%);
+	background: -webkit-linear-gradient(top, #fbe3e2 0%,#fff 100%);
+	background: linear-gradient(to bottom, #fbe3e2 0%,#fff 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fbe3e2', endColorstr='#ffffff',GradientType=0 );
+}
+
+.CatBg-gifts-donations,
+.CatBg-gifts,
+.CatBg-charity {background-color:#fbe3e2;}		
+
+.IconCat-gifts-donations {background-image:url(../images/icons/cat-color/gifts-donations.svg);}
+.IconCat-custom-category-gifts-donations {background-image:url(../images/icons/cat-color/custom-category-gifts-donations.svg);}
+.IconCat-gifts {background-image:url(../images/icons/cat-color/gifts.svg);}
+.IconCat-charity {background-image:url(../images/icons/cat-color/charity.svg);}
+	
+	
+/* Utilities */	
+
+.CatColor-utilities,
+.CatColor-electricity,
+.CatColor-water,
+.CatColor-heating,
+.CatColor-gas,
+.CatColor-garbage-collection,
+.CatColor-utilities,
+.CatColor-internet-tv,
+.CatColor-phone,
+.CatColor-home-security {color:#7cb342;}
+
+.SModalGradient-utilities,
+.SModalGradient-electricity,
+.SModalGradient-water,
+.SModalGradient-heating,
+.SModalGradient-gas,
+.SModalGradient-garbage-collection,
+.SModalGradient-utilities,
+.SModalGradient-internet-tv,
+.SModalGradient-phone,
+.SModalGradient-home-security {
+	background: #edf4e4;
+	background: -moz-linear-gradient(top, #edf4e4 0%, #fff 100%);
+	background: -webkit-linear-gradient(top, #edf4e4 0%,#fff 100%);
+	background: linear-gradient(to bottom, #edf4e4 0%,#fff 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#edf4e4', endColorstr='#ffffff',GradientType=0 );
+}
+
+.CatBg-utilities,
+.CatBg-electricity,
+.CatBg-water,
+.CatBg-heating,
+.CatBg-gas,
+.CatBg-garbage-collection,
+.CatBg-utilities,
+.CatBg-internet-tv,
+.CatBg-phone,
+.CatBg-home-security {background-color:#edf4e4;}	
+
+.IconCat-utilities {background-image:url(../images/icons/cat-color/utilities.svg);}
+.IconCat-custom-category-utilities {background-image:url(../images/icons/cat-color/custom-category-utilities.svg);}
+.IconCat-electricity {background-image:url(../images/icons/cat-color/electricity.svg);}
+.IconCat-water {background-image:url(../images/icons/cat-color/water.svg);}
+.IconCat-heating {background-image:url(../images/icons/cat-color/heating.svg);}
+.IconCat-gas {background-image:url(../images/icons/cat-color/gas.svg);}
+.IconCat-garbage-collection {background-image:url(../images/icons/cat-color/garbage-collection.svg);}
+.IconCat-utilities {background-image:url(../images/icons/cat-color/utilities.svg);}
+.IconCat-internet-tv {background-image:url(../images/icons/cat-color/internet-tv.svg);}
+.IconCat-phone {background-image:url(../images/icons/cat-color/phone.svg);}
+.IconCat-home-security {background-image:url(../images/icons/cat-color/home-security.svg);}
+	
+	
+/* Home */
+
+.CatColor-home,
+.CatColor-furniture-decor,
+.CatColor-household-supplies,
+.CatColor-electronics,
+.CatColor-pets,
+.CatColor-home-insurance,
+.CatColor-home-other,
+.CatColor-laundry-dry-cleaning,
+.CatColor-home-maintenance,
+.CatColor-stationery,
+.CatColor-insurance-other {color:#795548;}
+
+.SModalGradient-home,
+.SModalGradient-furniture-decor,
+.SModalGradient-household-supplies,
+.SModalGradient-electronics,
+.SModalGradient-pets,
+.SModalGradient-home-insurance,
+.SModalGradient-home-other,
+.SModalGradient-laundry-dry-cleaning,
+.SModalGradient-home-maintenance,
+.SModalGradient-stationery,
+.SModalGradient-insurance-other {
+	background: #ece7e5;
+	background: -moz-linear-gradient(top, #ece7e5 0%, #fff 100%);
+	background: -webkit-linear-gradient(top, #ece7e5 0%,#fff 100%);
+	background: linear-gradient(to bottom, #ece7e5 0%,#fff 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ece7e5', endColorstr='#ffffff',GradientType=0 );
+}
+
+.CatBg-home,
+.CatBg-furniture-decor,
+.CatBg-household-supplies,
+.CatBg-electronics,
+.CatBg-pets,
+.CatBg-home-insurance,
+.CatBg-home-other,
+.CatBg-laundry-dry-cleaning,
+.CatBg-home-maintenance,
+.CatBg-stationery,
+.CatBg-insurance-other {background-color:#ece7e5;}	
+	
+.IconCat-home {background-image:url(../images/icons/cat-color/home.svg);}	
+.IconCat-custom-category-home {background-image:url(../images/icons/cat-color/custom-category-home.svg);}	
+.IconCat-furniture-decor {background-image:url(../images/icons/cat-color/furniture-decor.svg);}	
+.IconCat-household-supplies {background-image:url(../images/icons/cat-color/household-supplies.svg);}	
+.IconCat-electronics {background-image:url(../images/icons/cat-color/electronics.svg);}	
+.IconCat-pets {background-image:url(../images/icons/cat-color/pets.svg);}	
+.IconCat-home-insurance {background-image:url(../images/icons/cat-color/home-insurance.svg);}	
+.IconCat-home-other {background-image:url(../images/icons/cat-color/home-other.svg);}	
+.IconCat-laundry-dry-cleaning {background-image:url(../images/icons/cat-color/laundry-dry-cleaning.svg);}	
+.IconCat-home-maintenance {background-image:url(../images/icons/cat-color/home-maintenance.svg);}
+.IconCat-stationery {background-image:url(../images/icons/cat-color/stationery.svg);}
+
+	
+
+/* Fees & Charges */	
+
+.CatColor-fees-charges,
+.CatColor-bank-fee,
+.CatColor-atm-fee,
+.CatColor-service-fee,
+.CatColor-credit-installment,
+.CatColor-late-fee,
+.CatColor-commissions,
+.CatColor-fees-other {color:#673ab7;}
+
+.SModalGradient-fees-charges,
+.SModalGradient-bank-fee,
+.SModalGradient-atm-fee,
+.SModalGradient-service-fee,
+.SModalGradient-credit-installment,
+.SModalGradient-late-fee,
+.SModalGradient-commissions,
+.SModalGradient-fees-other {
+	background: #eae3f5;
+	background: -moz-linear-gradient(top, #eae3f5 0%, #fff 100%);
+	background: -webkit-linear-gradient(top, #eae3f5 0%,#fff 100%);
+	background: linear-gradient(to bottom, #eae3f5 0%,#fff 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eae3f5', endColorstr='#ffffff',GradientType=0 );
+}
+	
+.CatBg-fees-charges,
+.CatBg-bank-fee,
+.CatBg-atm-fee,
+.CatBg-service-fee,
+.CatBg-credit-installment,
+.CatBg-late-fee,
+.CatBg-commissions,
+.CatBg-fees-other {background-color:#eae3f5;}		
+	
+.IconCat-fees-charges {background-image:url(../images/icons/cat-color/fees-charges.svg);}	
+.IconCat-custom-category-fees-charges {background-image:url(../images/icons/cat-color/custom-category-fees-charges.svg);}	
+.IconCat-bank-fee {background-image:url(../images/icons/cat-color/bank-fee.svg);}	
+.IconCat-atm-fee {background-image:url(../images/icons/cat-color/atm-fee.svg);}	
+.IconCat-service-fee {background-image:url(../images/icons/cat-color/service-fee.svg);}	
+.IconCat-credit-installment {background-image:url(../images/icons/cat-color/credit-installment.svg);}	
+.IconCat-late-fee {background-image:url(../images/icons/cat-color/late-fee.svg);}	
+.IconCat-commissions {background-image:url(../images/icons/cat-color/commissions.svg);}	
+.IconCat-fees-other	{background-image:url(../images/icons/cat-color/fees-other.svg);}	
+	
+	
+/* Business services */		
+	
+.CatColor-business-services,
+.CatColor-administrative-services,
+.CatColor-delivery,
+.CatColor-legal-services,
+.CatColor-it-services,
+.CatColor-accounting,
+.CatColor-advertising,
+.CatColor-printing,
+.CatColor-business-services-other,
+.CatColor-insurance-other,
+.CatColor-life-insurance,
+.CatColor-financial-services {color:#1e88e5;}	
+
+.SModalGradient-business-services,
+.SModalGradient-administrative-services,
+.SModalGradient-delivery,
+.SModalGradient-legal-services,
+.SModalGradient-it-services,
+.SModalGradient-accounting,
+.SModalGradient-advertising,
+.SModalGradient-printing,
+.SModalGradient-business-services-other,
+.SModalGradient-insurance-other,
+.SModalGradient-life-insurance,
+.SModalGradient-financial-services {
+	background: #dfeefb;
+	background: -moz-linear-gradient(top, #dfeefb 0%, #fff 100%);
+	background: -webkit-linear-gradient(top, #dfeefb 0%,#fff 100%);
+	background: linear-gradient(to bottom, #dfeefb 0%,#fff 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dfeefb', endColorstr='#ffffff',GradientType=0 );
+}	
+	
+.CatBg-business-services,
+.CatBg-administrative-services,
+.CatBg-delivery,
+.CatBg-legal-services,
+.CatBg-it-services,
+.CatBg-accounting,
+.CatBg-advertising,
+.CatBg-printing,
+.CatBg-life-insurance,
+.CatBg-business-services-other,
+.CatBg-insurance-other,
+.CatBg-financial-services {background-color:#dfeefb;}		
+	
+.IconCat-business-services {background-image:url(../images/icons/cat-color/business-services.svg);}	
+.IconCat-custom-category-business-services {background-image:url(../images/icons/cat-color/custom-category-business-services.svg);}	
+.IconCat-administrative-services {background-image:url(../images/icons/cat-color/administrative-services.svg);}	
+.IconCat-delivery {background-image:url(../images/icons/cat-color/delivery.svg);}	
+.IconCat-legal-services {background-image:url(../images/icons/cat-color/legal-services.svg);}	
+.IconCat-it-services {background-image:url(../images/icons/cat-color/it-services.svg);}	
+.IconCat-accounting {background-image:url(../images/icons/cat-color/accounting.svg);}	
+.IconCat-advertising {background-image:url(../images/icons/cat-color/advertising.svg);}	
+.IconCat-printing {background-image:url(../images/icons/cat-color/printing.svg);}	
+.IconCat-business-services-other {background-image:url(../images/icons/cat-color/business-services-other.svg);}	
+.IconCat-insurance-other {background-image:url(../images/icons/cat-color/insurance-other.svg);}
+.IconCat-financial-services {background-image:url(../images/icons/cat-color/financial-services.svg);}
+.IconCat-life-insurance {background-image:url(../images/icons/cat-color/life-insurance.svg);}		
+	
+/* Taxes */
+
+.CatColor-taxes,
+.CatColor-government-tax,
+.CatColor-local-tax,
+.CatColor-property-tax,
+.CatColor-sales-tax  {color:#546e7a;}	
+	
+.SModalGradient-taxes,
+.SModalGradient-government-tax,
+.SModalGradient-local-tax,
+.SModalGradient-property-tax,
+.SModalGradient-sales-tax {
+	background: #e7ebec;
+	background: -moz-linear-gradient(top, #e7ebec 0%, #fff 100%);
+	background: -webkit-linear-gradient(top, #e7ebec 0%,#fff 100%);
+	background: linear-gradient(to bottom, #e7ebec 0%,#fff 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e7ebec', endColorstr='#ffffff',GradientType=0 );
+}	
+
+.CatBg-taxes,
+.CatBg-government-tax,
+.CatBg-local-tax,
+.CatBg-property-tax,
+.CatBg-sales-tax {background-color:#e7ebec;}	
+
+.IconCat-taxes {background-image:url(../images/icons/cat-color/taxes.svg);}	
+.IconCat-government-tax {background-image:url(../images/icons/cat-color/government-tax.svg);}	
+.IconCat-local-tax {background-image:url(../images/icons/cat-color/local-tax.svg);}	
+.IconCat-property-tax {background-image:url(../images/icons/cat-color/property-tax.svg);}	
+.IconCat-sales-tax {background-image:url(../images/icons/cat-color/sales-tax.svg);}	
+	
+	
+/* Travel */
+
+.CatColor-travel,
+.CatColor-flights,
+.CatColor-accomodation,
+.CatColor-car-rental,
+.CatColor-vacations,
+.CatColor-travel-other,
+.CatColor-travel-insurance  {color:#039be5;}		
+
+.SModalGradient-travel,
+.SModalGradient-flights,
+.SModalGradient-accomodation,
+.SModalGradient-car-rental,
+.SModalGradient-vacations,
+.SModalGradient-travel-other,
+.SModalGradient-travel-insurance {
+	background: #dbf1fb;
+	background: -moz-linear-gradient(top, #dbf1fb 0%, #fff 100%);
+	background: -webkit-linear-gradient(top, #dbf1fb 0%,#fff 100%);
+	background: linear-gradient(to bottom, #dbf1fb 0%,#fff 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dbf1fb', endColorstr='#ffffff',GradientType=0 );
+}	
+	
+.CatBg-travel,
+.CatBg-flights,
+.CatBg-accomodation,
+.CatBg-car-rental,
+.CatBg-vacations,
+.CatBg-travel-other,
+.CatBg-travel-insurance {background-color:#dbf1fb;}		
+
+.IconCat-travel {background-image:url(../images/icons/cat-color/travel.svg);}	
+.IconCat-custom-caegory-travel {background-image:url(../images/icons/cat-color/custom-caegory-travel.svg);}	
+.IconCat-flights {background-image:url(../images/icons/cat-color/flights.svg);}	
+.IconCat-accomodation {background-image:url(../images/icons/cat-color/accomodation.svg);}	
+.IconCat-car-rental {background-image:url(../images/icons/cat-color/car-rental.svg);}	
+.IconCat-vacations {background-image:url(../images/icons/cat-color/vacations.svg);}	
+.IconCat-travel-other {background-image:url(../images/icons/cat-color/travel-other.svg);}	
+.IconCat-travel-insurance {background-image:url(../images/icons/cat-color/travel-insurance.svg);}	
+	
+	
+/* Income */	
+	
+.CatColor-income,
+.CatColor-paycheck,
+.CatColor-return-on-investment,
+.CatColor-interest-income,
+.CatColor-income-other {color:#43a047;}	
+	
+.SModalGradient-income,
+.SModalGradient-paycheck,
+.SModalGradient-return-on-investment,
+.SModalGradient-interest-income,
+.SModalGradient-income-other {
+	background: #e4f2e5;
+	background: -moz-linear-gradient(top, #e4f2e5 0%, #fff 100%);
+	background: -webkit-linear-gradient(top, #e4f2e5 0%,#fff 100%);
+	background: linear-gradient(to bottom, #e4f2e5 0%,#fff 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4f2e5', endColorstr='#ffffff',GradientType=0 );
+}	
+
+.CatBg-income,
+.CatBg-paycheck,
+.CatBg-return-on-investment,
+.CatBg-interest-income,
+.CatBg-income-other {background-color:#e4f2e5;}		
+	
+.IconCat-travel {background-image:url(../images/icons/cat-color/travel.svg);}
+.IconCat-custom-category-travel {background-image:url(../images/icons/cat-color/custom-category-travel.svg);}	
+.IconCat-income {background-image:url(../images/icons/cat-color/income.svg);}	
+.IconCat-paycheck {background-image:url(../images/icons/cat-color/paycheck.svg);}	
+.IconCat-return-on-investment {background-image:url(../images/icons/cat-color/return-on-investment.svg);}	
+.IconCat-interest-income {background-image:url(../images/icons/cat-color/interest-income.svg);}	
+.IconCat-income-other {background-image:url(../images/icons/cat-color/income-other.svg);}	
+
+
+/* Cash & ATM */
+
+.CatColor-cash-atm {color:#ad1457;}	
+.SModalGradient-cash-atm {
+	background: #f3dee7;
+	background: -moz-linear-gradient(top, #f3dee7 0%, #fff 100%);
+	background: -webkit-linear-gradient(top, #f3dee7 0%,#fff 100%);
+	background: linear-gradient(to bottom, #f3dee7 0%,#fff 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3dee7', endColorstr='#ffffff',GradientType=0 );
+}	
+
+.CatBg-cash-atm {background-color:#f3dee7;}	
+.IconCat-cash-atm {background-image:url(../images/icons/cat-color/cash-atm.svg);}
+.IconCat-custom-category-cash-atm {background-image:url(../images/icons/cat-color/custom-category-cash-atm.svg);}
+
+/* Uncategorized */	
+
+.CatColor-uncategorized,
+.CatColor-keyword  {color:#607d8b;}		
+	
+.SModalGradient-uncategorized,
+.SModalGradient-keyword {
+	background: #e9edef;
+	background: -moz-linear-gradient(top, #e9edef 0%, #fff 100%);
+	background: -webkit-linear-gradient(top, #e9edef 0%,#fff 100%);
+	background: linear-gradient(to bottom, #e9edef 0%,#fff 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e9edef', endColorstr='#ffffff',GradientType=0 );
+}	
+
+.CatBg-uncategorized,
+.CatBg-keyword {background-color:#e9edef;}		
+	
+.IconCat-uncategorized {background-image:url(../images/icons/cat-color/uncategorized.svg);}	
+.IconCat-custom-category-uncategorized {background-image:url(../images/icons/cat-color/custom-category-uncategorized.svg);}		
+.IconCat-keyword {background-image:url(../images/icons/cat/keyword.svg);}	
+	
+
+/* Account replenishment & Returns */	
+
+.CatColor-account-replenishment-returns,
+.CatColor-transfer-between-accounts,
+.CatColor-account-replenishment,
+.CatColor-return,
+.CatColor-personal-transfer  {color:#00acc1;}
+
+.SModalGradient-account-replenishment-returns,
+.SModalGradient-transfer-between-accounts,
+.SModalGradient-account-replenishment,
+.SModalGradient-return,
+.SModalGradient-personal-transfer {
+	background: #dbf3f6;
+	background: -moz-linear-gradient(top, #dbf3f6 0%, #fff 100%);
+	background: -webkit-linear-gradient(top, #dbf3f6 0%,#fff 100%);
+	background: linear-gradient(to bottom, #dbf3f6 0%,#fff 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dbf3f6', endColorstr='#ffffff',GradientType=0 );
+}	
+
+.CatBg-account-replenishment-returns,
+.CatBg-transfer-between-accounts,
+.CatBg-account-replenishment,
+.CatBg-return,
+.CatBg-personal-transfer {background-color:#dbf3f6;}	
+	
+.IconCat-account-replenishment-returns {background-image:url(../images/icons/cat-color/account-replenishment-returns.svg);}	
+.IconCat-custom-category-account-replenishment-returns {background-image:url(../images/icons/cat-color/custom-category-account-replenishment-returns.svg);}	
+.IconCat-transfer-between-accounts {background-image:url(../images/icons/cat-color/transfer-between-accounts.svg);}	
+.IconCat-account-replenishment {background-image:url(../images/icons/cat-color/account-replenishment.svg);}	
+.IconCat-return {background-image:url(../images/icons/cat-color/return.svg);}	
+.IconCat-personal-transfer {background-image:url(../images/icons/cat-color/personal-transfer.svg);}	
+
+
+/* Other icons */
+
+.IconCat-select-all {background-image:url(../images/icons/cat-color/select-all.svg);}
+.IconCat-spending {background-image:url(../images/icons/cat-color/spending.svg);}	
+.IconCat-custom-category-inactive {background-image:url(../images/icons/cat-color/custom-category-inactive.svg);}
+.IconCat-custom-category-level1-1 {background-image:url(../images/icons/cat-color/custom-category-level1-1.svg);}	
+
+

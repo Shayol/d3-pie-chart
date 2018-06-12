@@ -8,6 +8,7 @@
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="d3-tip.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="colors_icons.css">
     <style>
         html {
             height: 100%;
@@ -100,7 +101,6 @@
 </head>
 
 <body>
-
 
     <script>
         raw_data = [
@@ -233,19 +233,15 @@
             })
                 .on("mouseover", function (d) {
                     if (fetchData(raw_data, d.data.label).length) {
-                        d3.select(this)
-                            .transition("hover")
-                            .duration(200)
-                            .style("opacity", 0.5);
-                        d3.select(this).style("cursor", "zoom-in");
+                        var parent = d3.select(this).node().parentNode;
+                        parent.style.opacity = "0.5";;
+                        parent.style.cursor = "zoom-in";
                     }
                 })
                 .on("mouseleave", function (d) {
-                    d3.select(this)
-                        .transition("hover")
-                        .duration(100)
-                        .style("opacity", 1);
-                    d3.select(this).style("cursor", "default");
+                    var parent = d3.select(this).node().parentNode;
+                    parent.style.opacity = "1";
+                    parent.style.cursor = "default";
                 })
 
             newArcs.exit()
@@ -274,9 +270,9 @@
                 d3.svg(d.data.icon_path, { crossOrigin: "anonymous" }).then(function (svg) {
                     var svgNode = document.importNode(svg.documentElement, true);
 
-                    self.append(function (d) {
-                        return svgNode;
-                    })
+                        self.append(function(d) {
+                            return svgNode;
+                        })
                         .attr("width", 16).attr("height", 16)
                         .attr("class", "icon")
                         .attr("x", function (d) {
@@ -290,12 +286,9 @@
                             return y;
                         })
                         .on("mouseover", function (d, i, nodes) {
-                            if (fetchData(raw_data, d.data.label).length) {
-                                d3.select(this).style("cursor", "zoom-in");
-                                // console.log(self.nodes(0)[0].querySelector("path"));
-                                // var siblingSlice = self.nodes(0)[0];
-                                // siblingSlice.style.opacity="0.5";
-
+                            if (fetchData(raw_data, d.data.label).length) {                                                                                                                                                                  
+                                self.style("cursor", "zoom-in");
+                                self.style("opacity","0.5");    
                             }
                         })
                         .on("click", function (d, i) {
