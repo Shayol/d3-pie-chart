@@ -260,22 +260,20 @@
 
                 var self = this;
 
-                d3.svg("img/food1.svg", { crossOrigin: "anonymous" }).then(function (svg) {
-                    console.log(svg.documentElement);
+                d3.svg(d.data.icon_path, { crossOrigin: "anonymous" }).then(function (svg) {
+                    
                     var svgNode = document.importNode(svg.documentElement, true);
-                    console.log(svgNode);
+                    
                     d3.select(self).append(function(d) {
                         return svgNode;
                     })
                     .attr("width", 16).attr("height", 16)
                     .attr("class", "icon")
                     .attr("x", function (d) {
-                        var x = pieArc.centroid(d)[0] - 8;
-                        var y = pieArc.centroid(d)[1] - 8;
+                        var x =  pieArc.centroid(d)[0] - 8;
                         return x;
                     })
                     .attr("y", function (d) {
-                        var x = pieArc.centroid(d)[0] - 8;
                         var y = pieArc.centroid(d)[1] - 8;
                         return y;
                     })
@@ -287,13 +285,7 @@
 
 
 
-            var icons = d3.selectAll(".icon")
-                .attr("transform", function (d) {
-                    var x = pieArc.centroid(d)[0] - 8;
-                    var y = pieArc.centroid(d)[1] - 8;
-                    return "translate(" + x + "," + y + ")";
-                })
-                .attr("width", 16).attr("height", 16);
+            var icons = d3.selectAll(".icon");
             // change opacity of slice when mouse over icon 
 
             icons.on("mouseover", function (d,i,nodes) {
