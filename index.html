@@ -9,7 +9,6 @@
     <script src="d3-tip.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <style>
-
         html {
             height: 100%;
         }
@@ -57,7 +56,7 @@
             cursor: pointer;
         }
 
-        .d3-tip {            
+        .d3-tip {
             position: relative;
             width: 145px;
             height: 97px;
@@ -66,18 +65,19 @@
             background-color: white;
             border: 2px solid #dddddd;
             border-radius: 8px;
-            line-height: 1;          
-         }
+            line-height: 1;
+        }
 
-         text {
-             fill: #333333;
-         }
+        text {
+            fill: #333333;
+        }
 
-         line {
-             stroke: #dddddd;
-         }
- 
-    /* Creates a small triangle extender for the tooltip */
+        line {
+            stroke: #dddddd;
+        }
+
+        /* Creates a small triangle extender for the tooltip */
+
         .d3-tip:after {
             content: "";
             display: inline-block;
@@ -93,12 +93,12 @@
             background-color: white;
             z-index: 2;
         }
-
     </style>
 
     <title>D3</title>
 
 </head>
+
 <body>
 
 
@@ -145,9 +145,9 @@
 
         var lineG = svg.append("g")
             .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
-        
+
         var key = function (d) { return d.data.label; }
-        
+
         var pie = d3.pie().value(function (d) {
             return d.value;
         });
@@ -155,9 +155,9 @@
         var pieArc = d3.arc()
             .outerRadius(outerRadius)
             .innerRadius(innerRadius);
-        
+
         var lineArc1 = d3.arc()
-            .outerRadius(outerRadius +  2)
+            .outerRadius(outerRadius + 2)
             .innerRadius(outerRadius + 2);
 
         var lineArc2 = d3.arc()
@@ -169,18 +169,18 @@
 
             // calculate total value
 
-            var totalValue = d3.sum(data, function(d){ return d.value; });
+            var totalValue = d3.sum(data, function (d) { return d.value; });
 
             var total = g.append("text")
-            .attr("text-anchor", "middle")
-            .attr("dy", ".35em")
-            .attr("class", "pie-total")
-            .text(totalValue + " €");
+                .attr("text-anchor", "middle")
+                .attr("dy", ".35em")
+                .attr("class", "pie-total")
+                .text(totalValue + " €");
 
             //calculate percent for baloon - also used to calc animation
 
-            function caclPerc(value) {
-                return Math.round(value/totalValue * 100);
+            function calcPerc(value) {
+                return Math.round(value / totalValue * 100);
             }
 
             //start making donut chart
@@ -199,46 +199,46 @@
                 .attr("d", pieArc)
                 .attr("fill", function (d, i) { return d.data.color || color(i); })
                 .attr("stroke", "#fff");
-                
 
-                //add animation to slices on load
-                slices.transition("load")
-                .duration(function(d, i) { 
-                    return caclPerc(d.data.value) * 20; 
+
+            //add animation to slices on load
+            slices.transition("load")
+                .duration(function (d, i) {
+                    return calcPerc(d.data.value) * 20;
                 })
-                .attrTween('d', function(d) {
-                    var i = d3.interpolate(d.startAngle+0.1, d.endAngle);
-                    return function(t) {
+                .attrTween('d', function (d) {
+                    var i = d3.interpolate(d.startAngle + 0.1, d.endAngle);
+                    return function (t) {
                         d.endAngle = i(t);
                         return pieArc(d);
                     }
                 });
 
-                slices.on("click", function (d, i) {
-                    if (fetchData(raw_data, d.data.label).length) {
+            slices.on("click", function (d, i) {
+                if (fetchData(raw_data, d.data.label).length) {
 
-                        //total added and removed on every 'change' function call 
-                        total.remove();
-                        change(fetchData(raw_data, d.data.label))
-                        
-                    }
-                })
+                    //total added and removed on every 'change' function call 
+                    total.remove();
+                    change(fetchData(raw_data, d.data.label))
+
+                }
+            })
                 .on("mouseover", function (d) {
-                        if (fetchData(raw_data, d.data.label).length) {
-                            d3.select(this)
-                                .transition("hover")
-                                .duration(200)
-                                .style("opacity", 0.5);
-                            d3.select(this).style("cursor", "zoom-in");
-                        }
-                    })
-                .on("mouseout", function (d) {
+                    if (fetchData(raw_data, d.data.label).length) {
                         d3.select(this)
                             .transition("hover")
-                            .duration(100)
-                            .style("opacity", 1);
-                        d3.select(this).style("cursor", "default");
-                    })
+                            .duration(200)
+                            .style("opacity", 0.5);
+                        d3.select(this).style("cursor", "zoom-in");
+                    }
+                })
+                .on("mouseout", function (d) {
+                    d3.select(this)
+                        .transition("hover")
+                        .duration(100)
+                        .style("opacity", 1);
+                    d3.select(this).style("cursor", "default");
+                })
 
             newArcs.exit()
                 .remove();
@@ -248,21 +248,52 @@
             var slicesWithIcons = arcs.filter(function (d, i) {
                 var angle = d.endAngle - d.startAngle;
 
-                if (d.data.icon_path && angle > 0.38) { 
+                if (d.data.icon_path && angle > 0.38) {
                     return true;
                 }
                 return false;
             });
 
-            var icons = slicesWithIcons.append("svg:image")
-                .attr("href", function (d) { return d.data.icon_path })
+            
+
+            slicesWithIcons.each(function(d) { 
+
+                var self = this;
+
+                d3.svg("img/food1.svg", { crossOrigin: "anonymous" }).then(function (svg) {
+                    console.log(svg.documentElement);
+                    var svgNode = document.importNode(svg.documentElement, true);
+                    console.log(svgNode);
+                    d3.select(self).append(function(d) {
+                        return svgNode;
+                    })
+                    .attr("width", 16).attr("height", 16)
+                    .attr("class", "icon")
+                    .attr("x", function (d) {
+                        var x = pieArc.centroid(d)[0] - 8;
+                        var y = pieArc.centroid(d)[1] - 8;
+                        return x;
+                    })
+                    .attr("y", function (d) {
+                        var x = pieArc.centroid(d)[0] - 8;
+                        var y = pieArc.centroid(d)[1] - 8;
+                        return y;
+                    })
+                    .selectAll("path").style("fill", "#fff");
+                });
+                
+            });
+                
+
+
+
+            var icons = d3.selectAll(".icon")
                 .attr("transform", function (d) {
                     var x = pieArc.centroid(d)[0] - 8;
                     var y = pieArc.centroid(d)[1] - 8;
                     return "translate(" + x + "," + y + ")";
                 })
                 .attr("width", 16).attr("height", 16);
-
             // change opacity of slice when mouse over icon 
 
             icons.on("mouseover", function (d,i,nodes) {
@@ -278,16 +309,18 @@
                 }
             });
 
-            // add baloons(tooltips) 
+            //add baloons(tooltips) 
 
             var tool_tip = d3.tip()
                 .attr("class", "d3-tip")
                 .offset([-15, 0])
-                .html(function(d) { return "<a href='#' class='pie-baloon-link'><div class='pie-baloon-transactions'>" + d.data.transactions + " transactions </div>"
+                .html(function (d) {
+                    return "<a href='#' class='pie-baloon-link'><div class='pie-baloon-transactions'>" + d.data.transactions + " transactions </div>"
                         + "<div class='pie-baloon-amount'>"
-                        + d.data.value + " €</div>"                         
-                        + "<div>" + caclPerc(d.data.value) + "%</div></a>"; });
-                g.call(tool_tip);
+                        + d.data.value + " €</div>"
+                        + "<div>" + calcPerc(d.data.value) + "%</div></a>";
+                });
+            g.call(tool_tip);
 
             // hide baloons on mouseout 
 
@@ -312,20 +345,20 @@
                 .attr("class", "pie-label")
 
                 // baloons show up on mouseover 
-                
-                .on('mouseover', function(d) {
+
+                .on('mouseover', function (d) {
                     tool_tip.show(d);
 
                     //baloon hides when mouse pointer leaves the baloon
-                    var baloon =  document.querySelector(".d3-tip");
-                    baloon.addEventListener('mouseleave', function(e) {
+                    var baloon = document.querySelector(".d3-tip");
+                    baloon.addEventListener('mouseleave', function (e) {
                         tool_tip.hide();
                     });
                 })
 
                 //baloon hides after timeout so the user has
                 //time to click on it
-                .on('mouseout', function(d) {
+                .on('mouseout', function (d) {
                     var coordinates = [0, 0];
                     coordinates = d3.mouse(this);
 
@@ -334,24 +367,24 @@
                         tool_tip.hide();
                     }
                 });
-                
-                
+
+
             // make lines 
 
             var polyline = lineG.selectAll("line")
                 .data(pie(data), key)
-                
+
             polyline.enter()
-                .append("line").attr("x1", function(d) {
+                .append("line").attr("x1", function (d) {
                     return lineArc1.centroid(d)[0];
                 })
-                .attr("y1", function(d) {
+                .attr("y1", function (d) {
                     return lineArc1.centroid(d)[1];
                 })
-                .attr("x2", function(d) {
+                .attr("x2", function (d) {
                     return lineArc2.centroid(d)[0];
                 })
-                .attr("y2", function(d) {
+                .attr("y2", function (d) {
                     return lineArc2.centroid(d)[1];
                 })
                 .attr("stroke-width", 2);
