@@ -51,7 +51,7 @@ d3.json("data.json", { crossOrigin: "anonymous" }).then(function (raw_data) {
 
 
     function fetchData(raw_data, parent = '') {
-        var result = [];
+
         temp = raw_data.filter(item => item.parent === parent);
 
         temp.forEach(function (item) {
@@ -173,6 +173,7 @@ d3.json("data.json", { crossOrigin: "anonymous" }).then(function (raw_data) {
 
             //get icon
             d3.svg(d.data.icon_path, { crossOrigin: "anonymous" }).then(function (svg) {
+                
                 var svgNode = document.importNode(svg.documentElement, true);
 
                 self.append(function (d) {
@@ -201,7 +202,10 @@ d3.json("data.json", { crossOrigin: "anonymous" }).then(function (raw_data) {
                     })
                     .selectAll("path").style("fill", "#fff");
 
-            });
+            })
+            .catch(function(err) {
+                console.log('Fetch Error', err);
+              });
 
         });
 
@@ -291,4 +295,7 @@ d3.json("data.json", { crossOrigin: "anonymous" }).then(function (raw_data) {
 
     change(fetchData(raw_data));
 
-});
+})
+.catch(function(err) {
+    console.log('Fetch Error', err);
+  });
