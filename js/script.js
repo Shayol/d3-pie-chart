@@ -216,8 +216,6 @@ d3.json("data.json", { crossOrigin: "anonymous" }).then(function (raw_data) {
             });
         g.call(tool_tip);
 
-        // hide baloons on mouseout 
-
         // add labels                         
         var labels = arcs.append("text")
             .attr("transform", function (d) {
