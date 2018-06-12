@@ -1,0 +1,15 @@
+[
+    { "label": "Kids", "keyword": "kids", "value": 40, "transactions": 31, "parent": "" },
+    { "label": "Health & fitness", "keyword": "Health & fitness", "value": 24, "transactions": 15, "parent": "" },
+    { "label": "Utilities", "keyword": "Utilities","value": 5, "transactions": 9,  "parent": "" },
+    { "label": "Food & drinks", "keyword": "Food & drinks","value": 45, "transactions": 31, "parent": "" },
+    { "label": "Household", "keyword": "Household", "value": 10, "transactions": 9, "parent": "" },
+    { "label": "Baby supplies", "keyword": "Baby supplies", "value": 30, "transactions": 31, "parent": "Kids" },
+    { "label": "Babysitter daycare", "keyword": "Babysitter daycare", "value": 50, "transactions": 31, "parent": "Kids" },
+    { "label": "Pharmacy", "keyword": "Pharmacy","value": 10, "transactions": 31, "parent": "Health & fitness" },
+    { "label": "Medicine", "keyword": "Medicine", "value": 50, "transactions": 1, "parent": "Health & fitness" },
+    { "label": "Restaurants", "keyword": "Restaurants", "value": 20, "transactions": 31, "parent": "Food & drinks" },
+    { "label": "sub_category1", "keyword": "sub_category1", "value": 50, "transactions": 1, "parent": "Food & drinks" },
+    { "label": "sub_category2", "keyword": "sub_category2", "value": 30, "transactions": 31, "parent": "Restaurants" },
+    { "label": "sub_category3", "keyword": "sub_category3", "value": 20, "transactions": 31, "parent": "Restaurants" }
+]
