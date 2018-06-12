@@ -4,7 +4,9 @@ var width = 500,
     height = 340,
     outerRadius = 114,
     innerRadius = 66.5,
-    labelR = outerRadius + 28;
+    labelR = outerRadius + 28,
+    iconWidth = 16,
+    iconHeight = 16;
 
 
 d3.json("data.json", { crossOrigin: "anonymous" }).then(function (raw_data) {
@@ -86,6 +88,16 @@ d3.json("data.json", { crossOrigin: "anonymous" }).then(function (raw_data) {
             d3.select(".d3-tip").remove();
         }
 
+        // called when slice of pie, icon on pie or label is clicked
+
+        function clickAction(d) {
+            if (fetchData(raw_data, d.data.keyword).length) {
+                //total and baloons removed on every 'change' function call 
+                removeNodes();
+                change(fetchData(raw_data, d.data.keyword));
+            }
+        }
+
         //start making donut chart
 
         var newArcs = g.selectAll(".arc")
@@ -119,13 +131,7 @@ d3.json("data.json", { crossOrigin: "anonymous" }).then(function (raw_data) {
             });
 
         slices.on("click", function (d, i) {
-            if (fetchData(raw_data, d.data.keyword).length) {
-
-                //total and baloons removed on every 'change' function call 
-                removeNodes();
-                change(fetchData(raw_data, d.data.keyword))
-
-            }
+            clickAction(d);
         })
             .on("mouseover", function (d) {
                 if (fetchData(raw_data, d.data.keyword).length) {
@@ -172,30 +178,26 @@ d3.json("data.json", { crossOrigin: "anonymous" }).then(function (raw_data) {
                 self.append(function (d) {
                     return svgNode;
                 })
-                    .attr("width", 16).attr("height", 16)
+                    .attr("width", iconWidth).attr("height", iconHeight)
                     .attr("class", "icon")
                     .attr("x", function (d) {
                         d.endAngle = endAngle;
 
-                        var x = pieArc.centroid(d)[0] - 8;
+                        var x = pieArc.centroid(d)[0] - iconWidth / 2;
                         return x;
                     })
                     .attr("y", function (d) {
-                        var y = pieArc.centroid(d)[1] - 8;
+                        var y = pieArc.centroid(d)[1] - iconHeight / 2;
                         return y;
                     })
-                    .on("mouseover", function (d, i, nodes) {
+                    .on("mouseover", function (d) {
                         if (fetchData(raw_data, d.data.keyword).length) {
                             self.style("cursor", "zoom-in");
                             self.style("opacity", "0.5");
                         }
                     })
-                    .on("click", function (d, i) {
-                        if (fetchData(raw_data, d.data.keyword).length) {
-
-                            removeNodes();
-                            change(fetchData(raw_data, d.data.keyword));
-                        }
+                    .on("click", function (d) {
+                        clickAction(d);
                     })
                     .selectAll("path").style("fill", "#fff");
 
@@ -257,6 +259,9 @@ d3.json("data.json", { crossOrigin: "anonymous" }).then(function (raw_data) {
                 if (y > -1) {
                     tool_tip.hide(d);
                 }
+            })
+            .on("click", function (d) {
+                clickAction(d);
             });
 
         // make lines 
