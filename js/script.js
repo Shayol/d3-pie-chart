@@ -1,6 +1,5 @@
-
-var JSON_URL = "data.json";
 var PATH_TO_ICON = "/images/icons/cat-color/";
+var JSON_URL = "data.json";
 
 var width = 500,
     height = 340,
@@ -18,7 +17,7 @@ function getColor(keyword) {
             classes = sheets[key].rules || sheets[key].cssRules
         }
     })
-    console.log(typeof classes)
+
     for (var x = 0; x < classes.length; x++) {
         if (classes[x].selectorText.includes(prefix + keyword)) {
             (classes[x].style.color) ? color = classes[x].style.color : color = false;
@@ -33,8 +32,8 @@ d3.json(JSON_URL, { crossOrigin: "anonymous" }).then(function (raw_data) {
     // random colors when no color provided
 
     var color = d3.scaleOrdinal(["#3f51b5", "#009688", "#039be5", "#d2d588",
-    "#795548", "#ff6f00", "#e91e63", "#607d8b",
-    "#7cb342", "#e53935"]);
+        "#795548", "#ff6f00", "#e91e63", "#607d8b",
+        "#7cb342", "#e53935"]);
 
     var svg = d3.select("body").append("svg")
         .attr("width", width)
@@ -107,6 +106,16 @@ d3.json(JSON_URL, { crossOrigin: "anonymous" }).then(function (raw_data) {
             d3.select(".d3-tip").remove();
         }
 
+        // called when slice of pie, icon on pie or label is clicked
+
+        function clickAction(d) {
+            if (fetchData(raw_data, d.data.keyword).length) {
+                //total and baloons removed on every 'change' function call 
+                removeNodes();
+                change(fetchData(raw_data, d.data.keyword));
+            }
+        }
+
         //start making donut chart
 
         var newArcs = g.selectAll(".arc")
@@ -140,36 +149,18 @@ d3.json(JSON_URL, { crossOrigin: "anonymous" }).then(function (raw_data) {
             });
 
         slices.on("click", function (d, i) {
-            if (fetchData(raw_data, d.data.keyword).length) {
-
-                //total and baloons removed on every 'change' function call 
-                removeNodes();
-                change(fetchData(raw_data, d.data.keyword))
-
-            }
+            clickAction(d);
         })
             .on("mouseover", function (d) {
                 if (fetchData(raw_data, d.data.keyword).length) {
 
-                    //chnage opacity and cursor of slice on hover
-                    var parent2 = d3.select(this).node().parentNode.childNodes
-                    Object.keys(parent2).forEach(function (key) {
-                        if (key == 0) {
-                            parent2[key].style.opacity = "0.5";;
-                            parent2[key].style.cursor = "zoom-in";
-                        }
-                    })
+                    //change opacity and cursor of slice on hover
+                    d3.select(this).style("opacity", 0.5).style("cursor", "zoom-in");
+                    
                 }
             })
-            .on("mouseout", function (d) {
-                //chnage opacity and cursor of slice on hover
-                var parent2 = d3.select(this).node().parentNode.childNodes
-                Object.keys(parent2).forEach(function (key) {
-                    if (key == 0) {
-                        parent2[key].style.opacity = "1";;
-                        parent2[key].style.cursor = "default";
-                    }
-                })
+            .on("mouseout", function (d) {                
+                d3.select(this).style("opacity", 1).style("cursor", "default");
             })
 
         newArcs.exit()
@@ -216,22 +207,18 @@ d3.json(JSON_URL, { crossOrigin: "anonymous" }).then(function (raw_data) {
                     })
                     .on("mouseover", function (d, i, nodes) {
                         if (fetchData(raw_data, d.data.keyword).length) {
+                            d3.select(this).style("cursor", "zoom-in");
                             var parent2 = d3.select(this).node().parentNode.childNodes
                             Object.keys(parent2).forEach(function (key) {
-                                if (key == 0 || key == 2) {
-                                    console.log(parent2[key])
-                                    parent2[key].style.opacity = "0.5";;
+                                if (key == 0) {
+                                    parent2[key].style.opacity = "0.5";
                                     parent2[key].style.cursor = "zoom-in";
-                                }
+                                } 
                             })
                         }
                     })
                     .on("click", function (d, i) {
-                        if (fetchData(raw_data, d.data.keyword).length) {
-
-                            removeNodes();
-                            change(fetchData(raw_data, d.data.keyword));
-                        }
+                        clickAction(d);
                     })
                     .selectAll("path").style("fill", "#fff");
 
@@ -295,6 +282,9 @@ d3.json(JSON_URL, { crossOrigin: "anonymous" }).then(function (raw_data) {
                 if (y > -1) {
                     tool_tip.hide(d);
                 }
+            })
+            .on("click", function (d) {
+                clickAction(d);
             });
 
         // make lines 
@@ -327,3 +317,6 @@ d3.json(JSON_URL, { crossOrigin: "anonymous" }).then(function (raw_data) {
 }).catch(function (err) {
     console.log('Fetch Error', err);
 });
+
+
+
