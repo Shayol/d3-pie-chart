@@ -64,16 +64,16 @@ d3.json(JSON_URL, { crossOrigin: "anonymous" }).then(function (raw_data) {
         .innerRadius(outerRadius + 19);
 
     function iconLink(keyword) {
-        return keyword ? PATH_TO_ICON + keyword + ".svg" : '';
+        return PATH_TO_ICON + keyword + ".svg";
     }
 
 
     function fetchData(raw_data, parent = '') {
-        var result = [];
+
         temp = raw_data.filter(item => item.parent === parent);
 
         temp.forEach(function (item) {
-            if (item.keyword && iconLink(item.keyword)) {
+            if (item.keyword) {
                 item.icon_path = iconLink(item.keyword);
             }
         });
