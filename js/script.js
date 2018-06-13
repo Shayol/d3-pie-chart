@@ -1,3 +1,5 @@
+
+var JSON_URL = "data.json";
 var PATH_TO_ICON = "/images/icons/cat-color/";
 
 var width = 500,
@@ -26,7 +28,7 @@ function getColor(keyword) {
     return color
 }
 
-d3.json("data.json", { crossOrigin: "anonymous" }).then(function (raw_data) {
+d3.json(JSON_URL, { crossOrigin: "anonymous" }).then(function (raw_data) {
 
     // random colors when no color provided
 
