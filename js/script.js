@@ -254,12 +254,8 @@ d3.json(JSON_URL, { crossOrigin: "anonymous" }).then(function (raw_data) {
             })
             .attr("dy", ".35em")
             .attr("dx", function(d) {
-                var angle = (d.endAngle + d.startAngle) / 2;
-                if(angle > Math.PI) {
-                    return "6px";
-                } 
-
-                return "-6px";
+                return (d.endAngle + d.startAngle) / 2 > Math.PI ?
+                    "6px" : "-6px";
                     
             })
             .attr("text-anchor", function (d) {
