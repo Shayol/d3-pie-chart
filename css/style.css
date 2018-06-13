@@ -1,5 +1,6 @@
 html {
     height: 100%;
+    box-sizing: border-box;
 }
 
 body {
@@ -57,30 +58,36 @@ line {
 
 .d3-tip {
     position: relative;
-    width: 145px;
-    height: 97px;
-    padding: 14px 0;
+    width: 146px;
+    height: 100px;
+    padding: 10px 0;
     font-size: 14px;
     background-color: white;
     border: 2px solid #dddddd;
-    border-radius: 8px;
-    line-height: 1;
+    border-radius: 6px;
+    line-height: 1.8em;
 }
 
 /* Creates a small triangle extender for the baloon */
 
-.d3-tip:after {
+.d3-tip:after, .d3-tip:before {
     content: "";
-    display: inline-block;
+    height: 0;
+    width: 0;
     position: absolute;
-    height: 10px;
-    width: 10px;
     top: 100%;
     left: 50%;
-    transform: rotate(45deg);
-    transform-origin: top right;
-    border-right: 2px solid #dddddd;
-    border-bottom: 2px solid #dddddd;
-    background-color: white;
+    margin-left: -8px;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
     z-index: 2;
+}
+
+.d3-tip:after {
+    margin-top: -2.5px;
+    border-top: 8px solid white;
+}
+
+.d3-tip:before {
+    border-top: 8px solid #dddddd;
 }

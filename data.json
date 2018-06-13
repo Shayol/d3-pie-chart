@@ -8,8 +8,9 @@
     { "label": "Babysitter daycare", "keyword": "babysitter-daycare", "value": 50, "transactions": 31, "parent": "kids" },
     { "label": "Pharmacy", "keyword": "pharmacy","value": 10, "transactions": 31, "parent": "health-fitness" },
     { "label": "Medicine", "keyword": "medicine", "value": 50, "transactions": 1, "parent": "health-fitness" },
-    { "label": "Restaurants", "keyword": "restaurants", "value": 20, "transactions": 31, "parent": "food" },
-    { "label": "sub_category1", "keyword": "sub_category1", "value": 50, "transactions": 1, "parent": "food" },
+    { "label": "Cafes, restaurants, bars", "keyword": "restaurants", "value": 20, "transactions": 31, "parent": "food" },
+    { "label": "Groceries", "keyword": "groceries", "value": 50, "transactions": 1, "parent": "food" },
+    { "label": "Meals", "keyword": "meals", "value": 50, "transactions": 1, "parent": "restaurants" },
     { "label": "sub_category2", "keyword": "sub_category2", "value": 30, "transactions": 31, "parent": "pharmacy" },
     { "label": "sub_category3", "keyword": "sub_category3", "value": 20, "transactions": 31, "parent": "baby-supplies" }
 ]
