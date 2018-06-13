@@ -11,6 +11,6 @@
     { "label": "Cafes, restaurants, bars", "keyword": "restaurants", "value": 20, "transactions": 31, "parent": "food" },
     { "label": "Groceries", "keyword": "groceries", "value": 50, "transactions": 1, "parent": "food" },
     { "label": "Meals", "keyword": "meals", "value": 50, "transactions": 1, "parent": "restaurants" },
-    { "label": "sub_category2", "keyword": "sub_category2", "value": 30, "transactions": 31, "parent": "pharmacy" },
-    { "label": "sub_category3", "keyword": "sub_category3", "value": 20, "transactions": 31, "parent": "baby-supplies" }
+    { "label": "Drugs", "keyword": "drugs", "value": 30, "transactions": 31, "parent": "pharmacy" },
+    { "label": "Baby stroller", "keyword": "baby-stroller", "value": 20, "transactions": 31, "parent": "baby-supplies" }
 ]
