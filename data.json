@@ -4,12 +4,12 @@
     { "label": "Utilities", "keyword": "Utilities","value": 5, "transactions": 9,  "parent": "" },
     { "label": "Food & drinks", "keyword": "food","value": 45, "transactions": 31, "parent": "" },
     { "label": "Household", "keyword": "home", "value": 10, "transactions": 9, "parent": "" },
-    { "label": "Baby supplies", "keyword": "Baby supplies", "value": 30, "transactions": 31, "parent": "kids" },
-    { "label": "Babysitter daycare", "keyword": "Babysitter daycare", "value": 50, "transactions": 31, "parent": "kids" },
-    { "label": "Pharmacy", "keyword": "Pharmacy","value": 10, "transactions": 31, "parent": "health-fitness" },
-    { "label": "Medicine", "keyword": "Medicine", "value": 50, "transactions": 1, "parent": "health-fitness" },
-    { "label": "Restaurants", "keyword": "Restaurants", "value": 20, "transactions": 31, "parent": "food" },
+    { "label": "Baby supplies", "keyword": "baby-supplies", "value": 30, "transactions": 31, "parent": "kids" },
+    { "label": "Babysitter daycare", "keyword": "babysitter-daycare", "value": 50, "transactions": 31, "parent": "kids" },
+    { "label": "Pharmacy", "keyword": "pharmacy","value": 10, "transactions": 31, "parent": "health-fitness" },
+    { "label": "Medicine", "keyword": "medicine", "value": 50, "transactions": 1, "parent": "health-fitness" },
+    { "label": "Restaurants", "keyword": "restaurants", "value": 20, "transactions": 31, "parent": "food" },
     { "label": "sub_category1", "keyword": "sub_category1", "value": 50, "transactions": 1, "parent": "food" },
-    { "label": "sub_category2", "keyword": "sub_category2", "value": 30, "transactions": 31, "parent": "Restaurants" },
-    { "label": "sub_category3", "keyword": "sub_category3", "value": 20, "transactions": 31, "parent": "Restaurants" }
+    { "label": "sub_category2", "keyword": "sub_category2", "value": 30, "transactions": 31, "parent": "pharmacy" },
+    { "label": "sub_category3", "keyword": "sub_category3", "value": 20, "transactions": 31, "parent": "baby-supplies" }
 ]

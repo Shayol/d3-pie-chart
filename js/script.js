@@ -4,9 +4,7 @@ var width = 500,
     height = 340,
     outerRadius = 114,
     innerRadius = 66.5,
-    labelR = outerRadius + 28,
-    iconWidth = 16,
-    iconHeight = 16;
+    labelR = outerRadius + 28;
 
 function getColor(keyword) {
     var prefix = 'CatColor-'
@@ -15,9 +13,10 @@ function getColor(keyword) {
     var sheets = document.styleSheets
     Object.keys(sheets).forEach(function (key) {
         if (sheets[key].title === 'color') {
-            classes = sheets[key].rules
+            classes = sheets[key].rules || sheets[key].cssRules
         }
     })
+    console.log(typeof classes)
     for (var x = 0; x < classes.length; x++) {
         if (classes[x].selectorText.includes(prefix + keyword)) {
             (classes[x].style.color) ? color = classes[x].style.color : color = false;
@@ -26,27 +25,6 @@ function getColor(keyword) {
     }
     return color
 }
-
-// function getColor(keyword) {
-//     var prefix = 'CatColor-';
-//     var classes;
-//     var color;
-//     var sheets = document.styleSheets;
-//     console.log(sheets);
-
-//     Object.keys(sheets).forEach(function (key) {
-//         var rules = sheets[key].rules;
-//         console.log(rules);
-//         Object.keys(rules).forEach(function(rulesKey) {
-//             if (rules[rulesKey].selectorText.includes(prefix + keyword)) {
-//                 color = rules[rulesKey].style.color;
-//             }
-//         }); 
-
-//     });
-//     return color;
-// }
-
 
 d3.json("data.json", { crossOrigin: "anonymous" }).then(function (raw_data) {
 
@@ -85,25 +63,21 @@ d3.json("data.json", { crossOrigin: "anonymous" }).then(function (raw_data) {
         .innerRadius(outerRadius + 19);
 
     function iconLink(keyword) {
-        return PATH_TO_ICON + keyword + ".svg";
+        return keyword ? PATH_TO_ICON + keyword + ".svg" : '';
     }
 
 
     function fetchData(raw_data, parent = '') {
+        var result = [];
+        temp = raw_data.filter(item => item.parent === parent);
 
-        result = raw_data.filter(item => item.parent === parent);
-
-        result.forEach(function (item) {
-            if (item.keyword) {
+        temp.forEach(function (item) {
+            if (item.keyword && iconLink(item.keyword)) {
                 item.icon_path = iconLink(item.keyword);
-            }
-
-            if (item.keyword && getColor(item.keyword)) {
-                item.color = getColor("food");
             }
         });
 
-        return result;
+        return temp;
     }
 
     function change(data) {
@@ -131,16 +105,6 @@ d3.json("data.json", { crossOrigin: "anonymous" }).then(function (raw_data) {
             d3.select(".d3-tip").remove();
         }
 
-        // called when slice of pie, icon on pie or label is clicked
-
-        function clickAction(d) {
-            if (fetchData(raw_data, d.data.keyword).length) {
-                //total and baloons removed on every 'change' function call 
-                removeNodes();
-                change(fetchData(raw_data, d.data.keyword));
-            }
-        }
-
         //start making donut chart
 
         var newArcs = g.selectAll(".arc")
@@ -155,7 +119,7 @@ d3.json("data.json", { crossOrigin: "anonymous" }).then(function (raw_data) {
 
         var slices = arcs.append("path")
             .attr("d", pieArc)
-            .attr("fill", function (d, i) { return d.data.color || color(i); })
+            .attr("fill", function (d, i) { return getColor(d.data.keyword) || color(i); })
             .attr("stroke", "#fff")
             .attr("class", "slice");
 
@@ -174,21 +138,36 @@ d3.json("data.json", { crossOrigin: "anonymous" }).then(function (raw_data) {
             });
 
         slices.on("click", function (d, i) {
-            clickAction(d);
+            if (fetchData(raw_data, d.data.keyword).length) {
+
+                //total and baloons removed on every 'change' function call 
+                removeNodes();
+                change(fetchData(raw_data, d.data.keyword))
+
+            }
         })
             .on("mouseover", function (d) {
                 if (fetchData(raw_data, d.data.keyword).length) {
 
                     //chnage opacity and cursor of slice on hover
-                    var parent = d3.select(this).node().parentNode;
-                    parent.style.opacity = "0.5";;
-                    parent.style.cursor = "zoom-in";
+                    var parent2 = d3.select(this).node().parentNode.childNodes
+                    Object.keys(parent2).forEach(function (key) {
+                        if (key == 0) {
+                            parent2[key].style.opacity = "0.5";;
+                            parent2[key].style.cursor = "zoom-in";
+                        }
+                    })
                 }
             })
-            .on("mouseleave", function (d) {
-                var parent = d3.select(this).node().parentNode;
-                parent.style.opacity = "1";
-                parent.style.cursor = "default";
+            .on("mouseout", function (d) {
+                //chnage opacity and cursor of slice on hover
+                var parent2 = d3.select(this).node().parentNode.childNodes
+                Object.keys(parent2).forEach(function (key) {
+                    if (key == 0) {
+                        parent2[key].style.opacity = "1";;
+                        parent2[key].style.cursor = "default";
+                    }
+                })
             })
 
         newArcs.exit()
@@ -216,39 +195,45 @@ d3.json("data.json", { crossOrigin: "anonymous" }).then(function (raw_data) {
 
             //get icon
             d3.svg(d.data.icon_path, { crossOrigin: "anonymous" }).then(function (svg) {
-
                 var svgNode = document.importNode(svg.documentElement, true);
 
                 self.append(function (d) {
                     return svgNode;
                 })
-                    .attr("width", iconWidth).attr("height", iconHeight)
+                    .attr("width", 16).attr("height", 16)
                     .attr("class", "icon")
                     .attr("x", function (d) {
                         d.endAngle = endAngle;
 
-                        var x = pieArc.centroid(d)[0] - iconWidth / 2;
+                        var x = pieArc.centroid(d)[0] - 8;
                         return x;
                     })
                     .attr("y", function (d) {
-                        var y = pieArc.centroid(d)[1] - iconHeight / 2;
+                        var y = pieArc.centroid(d)[1] - 8;
                         return y;
                     })
-                    .on("mouseover", function (d) {
+                    .on("mouseover", function (d, i, nodes) {
                         if (fetchData(raw_data, d.data.keyword).length) {
-                            self.style("cursor", "zoom-in");
-                            self.style("opacity", "0.5");
+                            var parent2 = d3.select(this).node().parentNode.childNodes
+                            Object.keys(parent2).forEach(function (key) {
+                                if (key == 0 || key == 2) {
+                                    console.log(parent2[key])
+                                    parent2[key].style.opacity = "0.5";;
+                                    parent2[key].style.cursor = "zoom-in";
+                                }
+                            })
                         }
                     })
-                    .on("click", function (d) {
-                        clickAction(d);
+                    .on("click", function (d, i) {
+                        if (fetchData(raw_data, d.data.keyword).length) {
+
+                            removeNodes();
+                            change(fetchData(raw_data, d.data.keyword));
+                        }
                     })
                     .selectAll("path").style("fill", "#fff");
 
-            })
-                .catch(function (err) {
-                    console.log('Error on icon load', err);
-                });
+            });
 
         });
 
@@ -306,9 +291,6 @@ d3.json("data.json", { crossOrigin: "anonymous" }).then(function (raw_data) {
                 if (y > -1) {
                     tool_tip.hide(d);
                 }
-            })
-            .on("click", function (d) {
-                clickAction(d);
             });
 
         // make lines 
@@ -338,7 +320,4 @@ d3.json("data.json", { crossOrigin: "anonymous" }).then(function (raw_data) {
 
     change(fetchData(raw_data));
 
-})
-    .catch(function (err) {
-        console.log('Fetch Error', err);
-    });
+});
