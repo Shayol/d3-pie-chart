@@ -8,6 +8,45 @@ var width = 500,
     iconWidth = 16,
     iconHeight = 16;
 
+function getColor(keyword) {
+    var prefix = 'CatColor-'
+    var classes
+    var color
+    var sheets = document.styleSheets
+    Object.keys(sheets).forEach(function (key) {
+        if (sheets[key].title === 'color') {
+            classes = sheets[key].rules
+        }
+    })
+    for (var x = 0; x < classes.length; x++) {
+        if (classes[x].selectorText.includes(prefix + keyword)) {
+            (classes[x].style.color) ? color = classes[x].style.color : color = false;
+        }
+
+    }
+    return color
+}
+
+// function getColor(keyword) {
+//     var prefix = 'CatColor-';
+//     var classes;
+//     var color;
+//     var sheets = document.styleSheets;
+//     console.log(sheets);
+
+//     Object.keys(sheets).forEach(function (key) {
+//         var rules = sheets[key].rules;
+//         console.log(rules);
+//         Object.keys(rules).forEach(function(rulesKey) {
+//             if (rules[rulesKey].selectorText.includes(prefix + keyword)) {
+//                 color = rules[rulesKey].style.color;
+//             }
+//         }); 
+
+//     });
+//     return color;
+// }
+
 
 d3.json("data.json", { crossOrigin: "anonymous" }).then(function (raw_data) {
 
@@ -46,21 +85,25 @@ d3.json("data.json", { crossOrigin: "anonymous" }).then(function (raw_data) {
         .innerRadius(outerRadius + 19);
 
     function iconLink(keyword) {
-        return keyword ? PATH_TO_ICON + keyword + ".svg" : '';
+        return PATH_TO_ICON + keyword + ".svg";
     }
 
 
     function fetchData(raw_data, parent = '') {
 
-        temp = raw_data.filter(item => item.parent === parent);
+        result = raw_data.filter(item => item.parent === parent);
 
-        temp.forEach(function (item) {
-            if (item.keyword && iconLink(item.keyword)) {
+        result.forEach(function (item) {
+            if (item.keyword) {
                 item.icon_path = iconLink(item.keyword);
+            }
+
+            if (item.keyword && getColor(item.keyword)) {
+                item.color = getColor("food");
             }
         });
 
-        return temp;
+        return result;
     }
 
     function change(data) {
@@ -173,7 +216,7 @@ d3.json("data.json", { crossOrigin: "anonymous" }).then(function (raw_data) {
 
             //get icon
             d3.svg(d.data.icon_path, { crossOrigin: "anonymous" }).then(function (svg) {
-                
+
                 var svgNode = document.importNode(svg.documentElement, true);
 
                 self.append(function (d) {
@@ -203,9 +246,9 @@ d3.json("data.json", { crossOrigin: "anonymous" }).then(function (raw_data) {
                     .selectAll("path").style("fill", "#fff");
 
             })
-            .catch(function(err) {
-                console.log('Fetch Error', err);
-              });
+                .catch(function (err) {
+                    console.log('Error on icon load', err);
+                });
 
         });
 
@@ -296,6 +339,6 @@ d3.json("data.json", { crossOrigin: "anonymous" }).then(function (raw_data) {
     change(fetchData(raw_data));
 
 })
-.catch(function(err) {
-    console.log('Fetch Error', err);
-  });
+    .catch(function (err) {
+        console.log('Fetch Error', err);
+    });
