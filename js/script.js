@@ -20,7 +20,7 @@ function getColor(keyword) {
     })
 
     for (var x = 0; x < classes.length; x++) {
-        if (classes[x].selectorText.includes(prefix + keyword)) {
+        if (classes[x].selectorText.indexOf(prefix + keyword) != -1) {
             (classes[x].style.color) ? color = classes[x].style.color : color = false;
         }
 
@@ -67,7 +67,9 @@ d3.json(JSON_URL, { crossOrigin: "anonymous" }).then(function (raw_data) {
 
     function fetchData(raw_data, parent = '') {
 
-        temp = raw_data.filter(item => item.parent === parent);
+        temp = raw_data.filter(function(item) {
+            return item.parent === parent;
+        });
 
         return temp;
     }
