@@ -233,7 +233,7 @@ d3.json(JSON_URL, { crossOrigin: "anonymous" }).then(function (raw_data) {
         g.call(tool_tip);
 
         // add labels                         
-        var labels = arcs.append("text")
+        arcs.append("text")
             .attr("transform", function (d) {
                 var c = pieArc.centroid(d),
                     x = c[0],
@@ -255,7 +255,6 @@ d3.json(JSON_URL, { crossOrigin: "anonymous" }).then(function (raw_data) {
                     "end" : "start";
             })
             .attr("class", "pie-label")
-
             // baloons show up on mouseover 
 
             .on('mouseover', function (d) {
@@ -282,8 +281,13 @@ d3.json(JSON_URL, { crossOrigin: "anonymous" }).then(function (raw_data) {
                 clickAction(d);
             })
             .text(function (d, i) { return d.data.label; })
-            //add ellipsis to labels
-            .each(wrap);
+
+            //add ellipsis to labels            
+            .each(wrap)
+
+            //add title visible on hover to label
+            .append("title")
+            .text(function(d, i) { return d.data.label;});
 
             //function adding ellipsis to text in labels
 
@@ -296,7 +300,9 @@ d3.json(JSON_URL, { crossOrigin: "anonymous" }).then(function (raw_data) {
                     self.text(text + '...');
                     textLength = self.node().getComputedTextLength();
                 }
-            } 
+            }
+  
+
         // make lines 
 
         var polyline = lineG.selectAll("line")
