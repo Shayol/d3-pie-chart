@@ -5,7 +5,8 @@ var width = 500,
     height = 340,
     outerRadius = 114,
     innerRadius = 66.5,
-    labelR = outerRadius + 28;
+    labelR = outerRadius + 28,
+    labelWidth = 120;
 
 function getColor(keyword) {
     var prefix = 'CatColor-'
@@ -263,7 +264,6 @@ d3.json(JSON_URL, { crossOrigin: "anonymous" }).then(function (raw_data) {
                 return (d.endAngle + d.startAngle) / 2 > Math.PI ?
                     "end" : "start";
             })
-            .text(function (d, i) { return d.data.label; })
             .attr("class", "pie-label")
 
             // baloons show up on mouseover 
@@ -290,8 +290,23 @@ d3.json(JSON_URL, { crossOrigin: "anonymous" }).then(function (raw_data) {
             })
             .on("click", function (d) {
                 clickAction(d);
-            });
+            })
+            .text(function (d, i) { return d.data.label; })
+            //add ellipsis to labels
+            .each(wrap);
 
+            //function adding ellipsis to text in labels
+
+            function wrap() {
+                var self = d3.select(this),
+                    textLength = self.node().getComputedTextLength(),
+                    text = self.text();
+                while (textLength > labelWidth && text.length > 0) {
+                    text = text.slice(0, -1);
+                    self.text(text + '...');
+                    textLength = self.node().getComputedTextLength();
+                }
+            } 
         // make lines 
 
         var polyline = lineG.selectAll("line")
