@@ -5,7 +5,7 @@ var width = 500,
     height = 340,
     outerRadius = 114,
     innerRadius = 66.5,
-    labelR = outerRadius + 28,
+    labelR = outerRadius + 30,
     labelWidth = 120;
 
 function getColor(keyword) {
@@ -172,7 +172,7 @@ d3.json(JSON_URL, { crossOrigin: "anonymous" }).then(function (raw_data) {
         var slicesWithIcons = arcs.filter(function (d, i) {
             var angle = d.endAngle - d.startAngle;
 
-            if (d.data.icon_path && angle > 0.38) {
+            if (d.data.icon_path && angle > 0.32) {
                 return true;
             }
             return false;
