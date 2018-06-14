@@ -1,4 +1,3 @@
-var PATH_TO_ICON = "/images/icons/cat-color/";
 var JSON_URL = "data.json";
 
 var width = 500,
@@ -6,7 +5,7 @@ var width = 500,
     outerRadius = 114,
     innerRadius = 66.5,
     labelR = outerRadius + 30,
-    labelWidth = 120;
+    labelWidth = 118;
 
 function getColor(keyword) {
     var prefix = 'CatColor-'
@@ -36,7 +35,7 @@ d3.json(JSON_URL, { crossOrigin: "anonymous" }).then(function (raw_data) {
         "#795548", "#ff6f00", "#e91e63", "#607d8b",
         "#7cb342", "#e53935"]);
 
-    var svg = d3.select("body").append("svg")
+    var svg = d3.select("#piechart").append("svg")
         .attr("width", width)
         .attr("height", height);
 
@@ -64,20 +63,10 @@ d3.json(JSON_URL, { crossOrigin: "anonymous" }).then(function (raw_data) {
         .outerRadius(outerRadius + 19)
         .innerRadius(outerRadius + 19);
 
-    function iconLink(keyword) {
-        return PATH_TO_ICON + keyword + ".svg";
-    }
-
 
     function fetchData(raw_data, parent = '') {
 
         temp = raw_data.filter(item => item.parent === parent);
-
-        temp.forEach(function (item) {
-            if (item.keyword) {
-                item.icon_path = iconLink(item.keyword);
-            }
-        });
 
         return temp;
     }
