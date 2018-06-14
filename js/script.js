@@ -1,11 +1,12 @@
 var JSON_URL = "data.json";
 
-var width = 500,
+var width = 510,
     height = 340,
     outerRadius = 114,
     innerRadius = 66.5,
     labelR = outerRadius + 30,
-    labelWidth = 118;
+    labelWidth = Math.round(width / 4.25);
+
 
 function getColor(keyword) {
     var prefix = 'CatColor-'
