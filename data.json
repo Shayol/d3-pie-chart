@@ -1,0 +1,16 @@
+[
+    { "label": "Kids", "keyword": "kids", "value": 40, "transactions": 31, "parent": "" },
+    { "label": "Health & fitness", "keyword": "health-fitness", "value": 24, "transactions": 15, "parent": "" },
+    { "label": "Utilities", "keyword": "Utilities","value": 5, "transactions": 9,  "parent": "" },
+    { "label": "Food & drinks", "keyword": "food","value": 45, "transactions": 31, "parent": "" },
+    { "label": "Household", "keyword": "home", "value": 10, "transactions": 9, "parent": "" },
+    { "label": "Baby supplies", "keyword": "baby-supplies", "value": 30, "transactions": 31, "parent": "kids" },
+    { "label": "Babysitter daycare", "keyword": "babysitter-daycare", "value": 50, "transactions": 31, "parent": "kids" },
+    { "label": "Pharmacy", "keyword": "pharmacy","value": 10, "transactions": 31, "parent": "health-fitness" },
+    { "label": "Medicine", "keyword": "medicine", "value": 50, "transactions": 1, "parent": "health-fitness" },
+    { "label": "Cafes, restaurants, bars", "keyword": "restaurants", "value": 20, "transactions": 31, "parent": "food" },
+    { "label": "Groceries", "keyword": "groceries", "value": 50, "transactions": 1, "parent": "food" },
+    { "label": "Meals", "keyword": "meals", "value": 50, "transactions": 1, "parent": "restaurants" },
+    { "label": "Drugs", "keyword": "drugs", "value": 30, "transactions": 31, "parent": "pharmacy" },
+    { "label": "Baby stroller", "keyword": "baby-stroller", "value": 20, "transactions": 31, "parent": "baby-supplies" }
+]
