@@ -3,7 +3,7 @@ var JSON_URL = "data.json";
 var width = 510,
     height = 340,
     outerRadius = 114,
-    innerRadius = 66.5,
+    innerRadius = Math.round(outerRadius / 1.7),
     labelR = outerRadius + 30,
     labelWidth = Math.round(width / 4.25);
 

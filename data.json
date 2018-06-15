@@ -1,7 +1,7 @@
 [
-    { "label": "Kids", "keyword": "kids", "value": 40, "icon_path": "/images/icons/cat-color/kids.svg", "transactions": 31, "parent": "" },
+    { "label": "Kids", "keyword": "kids", "value": 34, "icon_path": "/images/icons/cat-color/kids.svg", "transactions": 31, "parent": "" },
     { "label": "Health & fitness", "keyword": "health-fitness", "value": 24, "icon_path": "/images/icons/cat-color/health-fitness.svg", "transactions": 15, "parent": "" },
-    { "label": "Gifts & donations", "keyword": "gifts-donations", "value": 10, "icon_path": "/images/icons/cat-color/gifts-donations.svg", "transactions": 5, "parent": "" },
+    { "label": "Gifts & donations", "keyword": "gifts-donations", "value": 1, "icon_path": "/images/icons/cat-color/gifts-donations.svg", "transactions": 5, "parent": "" },
     { "label": "Utilities", "keyword": "utilities","value": 6, "icon_path": "/images/icons/cat-color/utilities.svg", "transactions": 9,  "parent": "" },
     { "label": "Food & drinks & takeout", "keyword": "food","value": 6, "icon_path": "/images/icons/cat-color/food.svg", "transactions": 31, "parent": "" },
     { "label": "Household", "keyword": "home", "value": 10, "icon_path": "/images/icons/cat-color/home.svg", "transactions": 9, "parent": "" },
