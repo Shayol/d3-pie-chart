@@ -65,7 +65,9 @@ d3.json(JSON_URL, { crossOrigin: "anonymous" }).then(function (raw_data) {
         .innerRadius(outerRadius + 19);
 
 
-    function fetchData(raw_data, parent = '') {
+    function fetchData(raw_data, parent) {
+
+        parent = parent || '';
 
         temp = raw_data.filter(function(item) {
             return item.parent === parent;
