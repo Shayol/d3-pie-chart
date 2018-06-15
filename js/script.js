@@ -69,7 +69,7 @@ d3.json(JSON_URL, { crossOrigin: "anonymous" }).then(function (raw_data) {
 
         parent = parent || '';
 
-        temp = raw_data.filter(function(item) {
+        temp = raw_data.filter(function (item) {
             return item.parent === parent;
         });
 
@@ -151,10 +151,10 @@ d3.json(JSON_URL, { crossOrigin: "anonymous" }).then(function (raw_data) {
 
                     //change opacity and cursor of slice on hover
                     d3.select(this).style("opacity", 0.5).style("cursor", "zoom-in");
-                    
+
                 }
             })
-            .on("mouseout", function (d) {                
+            .on("mouseout", function (d) {
                 d3.select(this).style("opacity", 1).style("cursor", "default");
             })
 
@@ -208,7 +208,7 @@ d3.json(JSON_URL, { crossOrigin: "anonymous" }).then(function (raw_data) {
                                 if (key == 0) {
                                     parent2[key].style.opacity = "0.5";
                                     parent2[key].style.cursor = "zoom-in";
-                                } 
+                                }
                             })
                         }
                     })
@@ -229,7 +229,9 @@ d3.json(JSON_URL, { crossOrigin: "anonymous" }).then(function (raw_data) {
             .attr("class", "d3-tip")
             .offset([-15, 0])
             .html(function (d) {
-                return "<a href='#' class='pie-baloon-link'><div class='pie-baloon-transactions'>" + d.data.transactions + " transactions </div>"
+                return "<a href='#' class='pie-baloon-link' "
+                    + d.data.baloon_data + ">"
+                    + "<div class='pie-baloon-transactions'>" + d.data.transactions + " transactions </div>"
                     + "<div class='pie-baloon-amount'>"
                     + d.data.value + " €</div>"
                     + "<div>" + calcPerc(d.data.value) + "%</div></a>";
@@ -248,10 +250,10 @@ d3.json(JSON_URL, { crossOrigin: "anonymous" }).then(function (raw_data) {
                     (y / h * labelR) + ")";
             })
             .attr("dy", ".35em")
-            .attr("dx", function(d) {
+            .attr("dx", function (d) {
                 return (d.endAngle + d.startAngle) / 2 > Math.PI ?
                     "6px" : "-6px";
-                    
+
             })
             .attr("text-anchor", function (d) {
                 // are we past the center?
@@ -291,21 +293,21 @@ d3.json(JSON_URL, { crossOrigin: "anonymous" }).then(function (raw_data) {
 
             //add title visible on hover to label
             .append("title")
-            .text(function(d, i) { return d.data.label;});
+            .text(function (d, i) { return d.data.label; });
 
-            //function adding ellipsis to text in labels
+        //function adding ellipsis to text in labels
 
-            function wrap() {
-                var self = d3.select(this),
-                    textLength = self.node().getComputedTextLength(),
-                    text = self.text();
-                while (textLength > labelWidth && text.length > 0) {
-                    text = text.slice(0, -1);
-                    self.text(text + '...');
-                    textLength = self.node().getComputedTextLength();
-                }
+        function wrap() {
+            var self = d3.select(this),
+                textLength = self.node().getComputedTextLength(),
+                text = self.text();
+            while (textLength > labelWidth && text.length > 0) {
+                text = text.slice(0, -1);
+                self.text(text + '...');
+                textLength = self.node().getComputedTextLength();
             }
-  
+        }
+
 
         // make lines 
 
