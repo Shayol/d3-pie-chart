@@ -4,7 +4,7 @@ var width = 510,
     height = 340,
     outerRadius = 114,
     innerRadius = Math.round(outerRadius / 1.7),
-    labelR = outerRadius + 30,
+    labelR = outerRadius + 32,
     labelWidth = Math.round(width / 4.25);
 
 
@@ -57,12 +57,12 @@ d3.json(JSON_URL, { crossOrigin: "anonymous" }).then(function (raw_data) {
         .innerRadius(innerRadius);
 
     var lineArc1 = d3.arc()
-        .outerRadius(outerRadius + 2)
-        .innerRadius(outerRadius + 2);
+        .outerRadius(outerRadius + 4)
+        .innerRadius(outerRadius + 4);
 
     var lineArc2 = d3.arc()
-        .outerRadius(outerRadius + 19)
-        .innerRadius(outerRadius + 19);
+        .outerRadius(outerRadius + 21)
+        .innerRadius(outerRadius + 21);
 
 
     function fetchData(raw_data, parent) {
