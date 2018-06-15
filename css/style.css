@@ -19,11 +19,16 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-text {
+#piechart svg {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#piechart text {
     fill: #333333;
 }
 
-line {
+#piechart line {
     stroke: #dddddd;
 }
 
